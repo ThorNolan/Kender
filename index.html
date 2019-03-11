@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<html>
 <head>
-  <meta charset="utf-8" />
   <title> Project-1</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
 
   <!-- Responsive Layout view link -->
- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <!-- Materialize.css Links -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
   <!-- HTML to CSS file Link -->
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css" media="screen,projection"/>
 
 </head>
 <body>
@@ -31,6 +31,18 @@
   
   <!-- // =============================ATIF SECTION==================================== // -->
   
+  <form id="weather-form">
+      <label for="weather-input">Search for a weather</label>
+      <input type="text" id="weatherInput"><br>
+
+      <!-- This button will trigger our AJAX call -->
+      <input id="find-weather" type="submit">
+    </form>   
+  
+   <div class="display-weather">
+
+    
+   </div>
   
   
   
@@ -74,7 +86,7 @@
 
     </div>
   </div>
-  <div class="parallax"><img src="/assets/images/cloud-over-sun.gif" alt="Unsplashed background img 1"></div>
+  <div class="parallax"><img src="assets/images/cloud-over-sun.gif" alt="Unsplashed background img 1"></div>
 </div>
 
 
@@ -106,6 +118,8 @@
           <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
           <h5 class="center">Easy to work with</h5>
 
+
+<div>
           <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
         </div>
       </div>
@@ -114,6 +128,9 @@
   </div>
 </div>
 
+<div class="display-weather">
+
+</div>
 
 <div class="parallax-container valign-wrapper">
   <div class="section no-pad-bot">
@@ -123,7 +140,7 @@
       </div>
     </div>
   </div>
-  <div class="parallax"><img src="/assets/images/hot-rainy-gif.gif" alt="Unsplashed background img 2"></div>
+  <div class="parallax"><img src="assets/images/hot-rainy-gif.gif" alt="Unsplashed background img 2"></div>
 </div>
 
 <div class="container">
@@ -149,7 +166,7 @@
       </div>
     </div>
   </div>
-  <div class="parallax"><img src="/assets/images/snowing-gif.gif" alt="Unsplashed background img 3"></div>
+  <div class="parallax"><img src="assets/images/snowing-gif.gif" alt="Unsplashed background img 3"></div>
 </div>
 
 <footer class="page-footer teal">
@@ -203,6 +220,7 @@
 </div>
 
 <div class="apiReturns">
+
 <div class="appendHere"></div>
 
 </div>
@@ -232,10 +250,12 @@
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
   <!-- jquery Link -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-  <!-- Materialize.css javascript link -->
-  <script src="/assets/javascript/materialize.js"></script>
+  <!-- Materialize.css javascript and parallax initiation link -->
+  <script src="assets/javascript/materialize.js"></script>
+  <script src="assets/javascript/init.js"></script>
 
   <!-- HTML link to our JavaScript file -->
   <script src="/assets/javascript/app.js"></script>
