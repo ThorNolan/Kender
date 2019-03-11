@@ -101,6 +101,12 @@ $.ajax({
 
 
 // ================================SAM SECTION========================================= //
+//variables to be adjusted and attributed to the response from the wheather API
+var sunny = "happy";
+var rainy = "sad";
+var cloudy = "chill";
+var 
+
 //global variables to make Ajax work
 var token = "BQACzEOHfP2J3FNokH2pOUrIn5ffydy8LWpb-ErfudMBZgEtMI-bW9VLuZ8ne9tA0dkX2SNlirYfyhE1QY_pERmo60EbNUWpBGbEkQaX9v92LUHAsGvxPJrlOTuMZ-8BFjXstF8l4fM7WH2fjBcWaUngRlpIh__UggSbzpsomM3BeMEzRE9CGAGT5FRJX5Fj-NhPbQdxV5iVfnmQgMO4WJltncYOSePIf8OE7U5AYv9zFxlidyhchQ9yaZWnI2wTxhse4SJegnoQd7VfwPw"
 var search = "happy"
@@ -131,8 +137,10 @@ $(".button").on("click", function () {
 
             //function to call on info from a random playlist
             function randomPlaylistInfo() {
+
                 //random number between 0 and 19 to target a random playlist
                 var i = randomNumber(20)
+                
                 //variables to point to the Image, Link to playlist, and Playlist Name
                 var playlists = response.playlists.items;
                 var playlistImage = playlists[i].images[0].url;
