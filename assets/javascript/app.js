@@ -20,6 +20,30 @@ var inputLocation = "San Francisco";
 
 // ============================LIAM SECTION===================================== //
 
+var responseTree = {
+   hot: { // above 75 degrees
+    sunny: "hot+sunny",
+    cloudy: "hot+cloudy",
+    rainy: "rainy",
+   },
+   warm: { // above 50 degrees
+        sunny: 
+       cloudy:
+       rainy:
+   },
+   chilly: { // above 35 degrees       
+       sunny:
+       cloudy:
+       rainy:
+       snowy:
+   }
+   cold: { // below 35 degrees       
+    sunny:
+    cloudy:
+    rainy:
+    snowy:
+}
+}
 
 
 
