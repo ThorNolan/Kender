@@ -45,16 +45,6 @@ var inputLocation = "San Francisco";
 
 // =================================THOR SECTION=================================== //
 
-// initializer for parallax effect
-(function($){
-    $(function(){
-  
-      $('.sidenav').sidenav();
-      $('.parallax').parallax();
-  
-    }); // end of document ready
-  })(jQuery); // end of jQuery name space
-
   // Eventbrite pull and ajax call
   $(document).ready(function () {
 
