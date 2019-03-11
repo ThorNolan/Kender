@@ -2,8 +2,14 @@
 
 // TESTED API 
 
-var inputLocation = "San Francisco";
 
+//$("#userSubmit").on("click", function() {
+
+    
+
+
+    var inputLocation = "london";//$("#userInput").val();
+    var unit = "&units=imperial";
 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+ inputLocation +"&APPID=f7d032505cb605fdfe25eebe96d9ab15";
  
@@ -13,8 +19,14 @@ var inputLocation = "San Francisco";
    }).then(function (response) {
         
        console.log(response);
+
+       
  
    })
+
+//})
+
+
 
 // We can get weather[0"] , rain[1h"] ,name , temperature wind speed and more from api response
 
@@ -30,6 +42,58 @@ var inputLocation = "San Francisco";
 // ==============================END LIAM SECTION=============================== //
 
 // =============================ATIF SECTION==================================== //
+$("#find-weather").on("click", function(event){
+
+    event.preventDefault();
+
+    var inputLocation = $("#weatherInput").val();      //"San Francisco";
+    
+   // for(var i=0; i<5;i++){
+
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q="+ inputLocation +"&units=imperial&APPID=f7d032505cb605fdfe25eebe96d9ab15&cnt=5";
+ 
+     $.ajax({
+       url: queryURL,
+       method: "GET"
+   }).then(function (response) {
+        
+       
+       var apiResponse = response;
+      var responseList = response.list;
+       console.log(apiResponse);
+      console.log(responseList);
+
+       for(var i=0; i<responseList.length;i++){
+
+       $(".display-weather").append("<h1> Weather Details</h1>");
+
+       var cityName = apiResponse.city.name;
+
+       $(".display-weather").append("<p> City Name:  "+ cityName+"</p>");
+
+       var country = apiResponse.city.country;
+       $(".display-weather").append("<p> Country Name  :" + country + " </p>");
+
+       var windSpeed = responseList[i].wind.speed;
+
+       $(".display-weather").append("<p> Wind Speed  :" + windSpeed + " </p>");
+       
+       var pressure = responseList[i].main.pressure;
+       $(".display-weather").append("<p> Pressure  :" + pressure + " </p>");
+
+       var temperature = responseList[i].main.temp;
+       $(".display-weather").append("<p>  Temperature (F)  :" + temperature + " </p>");
+        
+       var rainStatus = responseList[i].weather[0].description;
+       $(".display-weather").append("<p> Rain Status  :" + rainStatus + " </p>");
+
+      
+       }
+       
+   })
+
+});
+
 
 
 
