@@ -12,16 +12,42 @@
 // ==============================END LIAM SECTION=============================== //
 
 // =============================ATIF SECTION==================================== //
+
+//-Atif-------Weather Search Detail Firebase Database---------------
+
+// Initialize Firebase
+        
+/*var config = {
+  apiKey: "AIzaSyC7sFmSCyeTZUQnW-wof8SBv4EV5uLvsxA",
+  authDomain: "weather-project-d144f.firebaseapp.com",
+  databaseURL: "https://weather-project-d144f.firebaseio.com",
+  projectId: "weather-project-d144f",
+  storageBucket: "weather-project-d144f.appspot.com",
+  messagingSenderId: "455614600456"
+};
+firebase.initializeApp(config);
+// Create a variable to reference the database.
+var database = firebase.database();
+
+      var weatherSearch = "";
+      var eventsSearch = "";
+      var musicPlaylist = "";
+
+      */
+
+//-Atif-------Weather Search By click on Submit---------------
+$(".row").hide();
 $("#find-weather").on("click", function(event){
 
     event.preventDefault();
     
+    $(".row").show();
 
     var inputLocation = $("#weatherInput").val();     
     
    
 
-    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q="+ inputLocation +"&units=imperial&APPID=f7d032505cb605fdfe25eebe96d9ab15&cnt=5";
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q="+ inputLocation +"&units=imperial&APPID=f7d032505cb605fdfe25eebe96d9ab15&cnt=3";
  
      $.ajax({
        url: queryURL,
