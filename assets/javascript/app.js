@@ -1,5 +1,6 @@
 
 
+
 // TESTED API 
 
 
@@ -11,7 +12,7 @@
     var inputLocation = "london";//$("#userInput").val();
     var unit = "&units=imperial";
 
-<<<<<<< HEAD
+
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + inputLocation + "&APPID=f7d032505cb605fdfe25eebe96d9ab15";
 
 $.ajax({
@@ -22,20 +23,18 @@ $.ajax({
     console.log(response);
 
 })
-=======
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+ inputLocation +"&APPID=f7d032505cb605fdfe25eebe96d9ab15";
- 
-     $.ajax({
-       url: queryURL,
-       method: "GET"
-   }).then(function (response) {
-        
-       console.log(response);
 
-       
- 
-   })
->>>>>>> ce9fb6e76ebbbd7cccdebc50e0342504091e8876
+var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + inputLocation + "&APPID=f7d032505cb605fdfe25eebe96d9ab15";
+
+$.ajax({
+    url: queryURL,
+    method: "GET"
+}).then(function (response) {
+
+    console.log(response);
+
+})
+
 
 //})
 
@@ -55,15 +54,42 @@ $.ajax({
 // ==============================END LIAM SECTION=============================== //
 
 // =============================ATIF SECTION==================================== //
+
+//-Atif-------Weather Search Detail Firebase Database---------------
+
+// Initialize Firebase
+        
+/*var config = {
+  apiKey: "AIzaSyC7sFmSCyeTZUQnW-wof8SBv4EV5uLvsxA",
+  authDomain: "weather-project-d144f.firebaseapp.com",
+  databaseURL: "https://weather-project-d144f.firebaseio.com",
+  projectId: "weather-project-d144f",
+  storageBucket: "weather-project-d144f.appspot.com",
+  messagingSenderId: "455614600456"
+};
+firebase.initializeApp(config);
+// Create a variable to reference the database.
+var database = firebase.database();
+
+      var weatherSearch = "";
+      var eventsSearch = "";
+      var musicPlaylist = "";
+
+      */
+
+//-Atif-------Weather Search By click on Submit---------------
+$(".row").hide();
 $("#find-weather").on("click", function(event){
 
     event.preventDefault();
-
-    var inputLocation = $("#weatherInput").val();      //"San Francisco";
     
-   // for(var i=0; i<5;i++){
+    $(".row").show();
 
-    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q="+ inputLocation +"&units=imperial&APPID=f7d032505cb605fdfe25eebe96d9ab15&cnt=5";
+    var inputLocation = $("#weatherInput").val();     
+    
+   
+
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q="+ inputLocation +"&units=imperial&APPID=f7d032505cb605fdfe25eebe96d9ab15&cnt=3";
  
      $.ajax({
        url: queryURL,
@@ -78,29 +104,37 @@ $("#find-weather").on("click", function(event){
 
        for(var i=0; i<responseList.length;i++){
 
-       $(".display-weather").append("<h1> Weather Details</h1>");
+        
+        var cardNum = i+1;
 
+        $("#card-"+cardNum).empty();
+      
        var cityName = apiResponse.city.name;
 
-       $(".display-weather").append("<p> City Name:  "+ cityName+"</p>");
+       $("#card-"+cardNum).append("City Name:  "+ cityName);
+
 
        var country = apiResponse.city.country;
-       $(".display-weather").append("<p> Country Name  :" + country + " </p>");
+       $("#card-"+cardNum).append("<p> Country Name  :" + country + " </p>");
 
        var windSpeed = responseList[i].wind.speed;
 
-       $(".display-weather").append("<p> Wind Speed  :" + windSpeed + " </p>");
+       $("#card-"+cardNum).append("<p> Wind Speed  :" + windSpeed + " </p>");
        
        var pressure = responseList[i].main.pressure;
-       $(".display-weather").append("<p> Pressure  :" + pressure + " </p>");
+       $("#card-"+cardNum).append("<p> Pressure  :" + pressure + " </p>");
 
        var temperature = responseList[i].main.temp;
-       $(".display-weather").append("<p>  Temperature (F)  :" + temperature + " </p>");
+       $("#card-"+cardNum).append("<p>  Temperature (F)  :" + temperature + " </p>");
         
        var rainStatus = responseList[i].weather[0].description;
-       $(".display-weather").append("<p> Rain Status  :" + rainStatus + " </p>");
+       $("#card-"+cardNum).append("<p> Rain Status  :" + rainStatus + " </p>");
 
-      
+
+            
+
+           
+            
        }
        
    })
@@ -219,6 +253,101 @@ $(document).ready(function () {
 
 
 // ================================SAM SECTION========================================= //
+//variables to be adjusted and attributed to the response from the wheather API
+
+var mood;
+
+function spotifySearch() {
+  var token = "BQAZy3vJIfyYr6I8a0lkmVkkc6ztuj8WHRfzcoKHXyrUl9VXFaJtq5myR5xgFn_-8xPIs3tPERUMyHjDMHdSwcTkUGj-SrGgElYMm-KPM6-9cqxkPlKW5wSCjGhiXPUNb1FnH0q7D7tBbb9dfMrzHa_XNnfHp0I9BKQyLGBHFlv3tawKoFaYY8f0_TThc76wGNnJ_ysJVUXiJ4ygBLyls03GikUgwZHMThCrxiIpf0_jYA1ZP7N5L9tlA8Q-qRkhsHuWtTpB0F5IsY0XXYk"
+  
+  var type = "playlist";
+
+  $.ajax({
+    url: 'https://api.spotify.com/v1/search?type=' + type + '&query=' + mood,
+    headers: {
+      Authorization: 'Bearer ' + token
+    }
+  }).then(function (response) {
+      console.log(response);
+    })
+  }
+
+  var todayRainStatus = responseList[0].weather[0].description;
+// using information we gathered from the weathe API, use that to assign a search term "mood" to a spotify playlist search
+if (todayRainStatus === "clear sky") {
+  mood = "happy";
+}
+
+if (todayRainStatus.includes("clouds")) {
+  mood = "chill";
+}
+if (todayRainStatus.includes("rain")) {
+  mood = "sad";
+}
+if (todayRainStatus.includes("thunderstsorm")) {
+  mood = "angry";
+}
+if (todayRainStatus.includes( "snow")) {
+  mood = "lo-fi";
+}
+
+//global variables to make Ajax work
+var token = "BQC8H2CVdjDHdiAm7Kc2mfFvH-AZQuQE86TuoY5B81CuBVHxzHf9Ul00NLvGxN7_KAcZqzpwHi0Dwj8hRZNPXTX1VsS80nOAlrgB5kX4zxU-IL1K1wtJVvj3qMdd13gZf64xi54hi7XStOhs-fVJlDJX-yZq_ff8QcB-Pr6S9dlmuEZoA2p9e5H0vC51FPy2Pab9rTx50Zd5hEP-CErRlYsqbVp-UXoWeJN4Lkax8B9Bq8URDDJirpA433uZfy3Myxf4U2It1IaMKM9TEGk";
+var search = "chill";
+var type = "playlist";
+
+//Random Number Generator function 
+function randomNumber(int) {
+    return Math.floor(Math.random() * int);
+}
+
+//on click event
+$(".button").on("click", function () {
+
+
+    //ajax Call
+    $.ajax({
+        url: 'https://api.spotify.com/v1/search?type=' + type + '&query=' + search,
+        headers: {
+            Authorization: 'Bearer ' + token
+        }
+    })
+        .then(function (response) {
+
+
+
+            console.log(response);
+            //links to useful items in the response object
+
+            //function to call on info from a random playlist
+            function randomPlaylistInfo() {
+
+                //random number between 0 and 19 to target a random playlist
+                var i = randomNumber(20)
+                
+                //variables to point to the Image, Link to playlist, and Playlist Name
+                var playlists = response.playlists.items;
+                var playlistImage = playlists[i].images[0].url;
+                var playlistLinks = playlists[i].external_urls.spotify;
+                var playlistName = playlists[i].name;
+
+
+                //print the information
+                console.log("Name: " + playlistName)
+                console.log("Image: " + playlistImage)
+                console.log("Playlist Link: " + playlistLinks)
+
+              // displaying information onto a card
+                $("#playlist-name").text("Playlist Name: " + playlistName);
+                $("#playlist-link").attr("href", playlistLinks);
+                $("#playlist-image").attr("src", playlistImage);
+
+            }
+            randomPlaylistInfo();
+
+
+        })
+})
 
 
 
