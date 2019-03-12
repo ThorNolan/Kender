@@ -42,21 +42,23 @@
         <form class="col s12">
         <div class="row">
             <div class="input-field col s12">
-            <input placeholder="Perp" id="email" type="text" class="validate">
-            <label for="email">My Name is...</label>
+            <input id="email" type="email" class="validate">
+            <label for="email">Email</label>
+            <span class="helper-text" data-error="Please enter a valid email" data-success="✓"></span>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-            <input placeholder="Skerp" id="password" type="text" class="validate">
+            <input id="password" type="password" class="validate">
             <label for="password">Password</label>
+            <span class="helper-text" data-error="wrong"></span>
             </div>
         </div>
 
         <button class="waves-effect waves-light btn" id="sign-up"><i class="material-icons left">waves</i>Sign Up</button>
         <button class="waves-effect waves-light btn" id="sign-in"><i class="material-icons left">cloud</i>Sign In</button>
         <button class="waves-effect hide waves-light btn" id="log-out"><i class="material-icons left">cloud</i>Log Out</button>
-        <!-- <button class="waves-effect waves-light btn" id="google-sign-in"><i class="material-icons left">cloud</i>Sign In</button> -->
+        <button class="waves-effect waves-light btn" id="google-sign-in"><i class="material-icons left">cloud</i>Sign in with Google</button>
 
        
         </form>
@@ -185,7 +187,7 @@
 
 // ---------------  GOOGLE (GMAIL) EMAIL & PASSWORD ----------------
 
-var provider = firebase.auth.GoogleAuthProvider();
+var provider = new firebase.auth.GoogleAuthProvider();
 
   // Ask user's permission to view contacts
     provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
@@ -209,13 +211,13 @@ var provider = firebase.auth.GoogleAuthProvider();
         currentUser = user;
         // ...
         }).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
+        // Handle Errors
+          var errorCode = error.code;
+          var errorMessage = error.message;
         // The email of the user's account used.
-        var email = error.email;
+          var email = error.email;
         // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
+          var credential = error.credential;
         // ...
         });
     }
