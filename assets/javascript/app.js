@@ -1,47 +1,4 @@
 
-
-
-// TESTED API 
-
-
-//$("#userSubmit").on("click", function() {
-
-    
-
-
-    var inputLocation = "london";//$("#userInput").val();
-    var unit = "&units=imperial";
-
-
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + inputLocation + "&APPID=f7d032505cb605fdfe25eebe96d9ab15";
-
-$.ajax({
-    url: queryURL,
-    method: "GET"
-}).then(function (response) {
-
-    console.log(response);
-
-})
-
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + inputLocation + "&APPID=f7d032505cb605fdfe25eebe96d9ab15";
-
-$.ajax({
-    url: queryURL,
-    method: "GET"
-}).then(function (response) {
-
-    console.log(response);
-
-})
-
-
-//})
-
-
-
-// We can get weather[0"] , rain[1h"] ,name , temperature wind speed and more from api response
-
 // ============================LIAM SECTION===================================== //
 
 
@@ -87,8 +44,6 @@ $("#find-weather").on("click", function(event){
 
     var inputLocation = $("#weatherInput").val();     
     
-   
-
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q="+ inputLocation +"&units=imperial&APPID=f7d032505cb605fdfe25eebe96d9ab15&cnt=3";
  
      $.ajax({
@@ -131,23 +86,13 @@ $("#find-weather").on("click", function(event){
        $("#card-"+cardNum).append("<p> Rain Status  :" + rainStatus + " </p>");
 
 
-            
-
-           
+                      
             
        }
        
    })
 
 });
-
-
-
-
-
-
-
-
 
 
 
