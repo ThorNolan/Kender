@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title> Project-1</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <!-- Responsive Layout view link -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Materialize.css Links -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+  <!-- HTML to CSS file Link -->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css" media="screen,projection"/>
+ 
+  <!-- Landing Page fonts -->
+  <link href="http://fonts.googleapis.com/css?family=Leckerli+One|Coustard:900" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+<!-- Video BG -->
+  <div class="fullscreen-bg">
+    <video loop muted autoplay class="fullscreen-bg__video">
+        <source src="assets/images/Lake - 161.mp4" type="video/mp4">
+        <source src="assets/images/Lake - 161.ogv" type="video/ogg">
+    </video>
+  </div>
+<!-- Video BG -->
+  <div class="container" id="welcome-container">
+    <h1>Plan less. Do more.</h1>
+   <br>
+    <h5>Welcome to <span id=name-logo>Weekender.</span></h5>
+  </div>
+  
+  <div class="container" id="main-container">
+    
+
+    
+    <div class="row">
+        <form class="col s12">
+        <div class="row">
+            <div class="input-field col s12">
+            <input id="email" type="email" class="validate">
+            <label for="email">Email</label>
+            <span class="helper-text" data-error="Please enter a valid email" data-success="✓"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+            <input id="password" type="password" class="validate">
+            <label for="password">Password</label>
+            <span class="helper-text" data-error="wrong"></span>
+            </div>
+        </div>
+
+        <button class="waves-effect waves-light btn" id="sign-up"><i class="material-icons left">waves</i>Sign Up</button>
+        <button class="waves-effect waves-light btn" id="sign-in"><i class="material-icons left">cloud</i>Sign In</button>
+        <button class="waves-effect hide waves-light btn" id="log-out"><i class="material-icons left">cloud</i>Log Out</button>
+        <button class="waves-effect waves-light btn" id="google-sign-in"><i class="material-icons left">cloud</i>Sign in with Google</button>
+
+       
+        </form>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- Firebase Reference -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script> -->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+    
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCGraU6ufyrzjduCPdI2TrBuDgtxWMKcgI",
+        authDomain: "weekender-app.firebaseapp.com",
+        databaseURL: "https://weekender-app.firebaseio.com",
+        projectId: "weekender-app",
+        storageBucket: "weekender-app.appspot.com",
+        messagingSenderId: "812263140834"
+    };
+    firebase.initializeApp(config);
+// </script>
+
+<!--Handle page events-->
+<script>    
+  var currentUser;
+  var auth = firebase.auth();
+
+
+// ---------------  ANONYMOUS EMAIL & PASSWORD ----------------
+
+
+// 'Sign-Up' button clicked:
+  $('#sign-up').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var email = $('#email').val();
+    var password = $('#password').val()
+    console.log(email, password);
+
+        // Register a new user
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+    .catch(function (err) {
+        // Handle errors..
+        var errorCode = err.code;
+        var errorMessage = err.message;
+
+        console.log(errorCode, errorMessage);
+        });
+
+    //Empty input fields:
+    $('#email').text("");
+    $('#password').text("");
+
+    });
+
+
+// 'Sign-In' button clicked:
+
+    $('#sign-in').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+        var email = $('#email').val();
+        var password = $('#password').val()
+        console.log(email, password);
+    
+    // Sign in existing user
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .catch(function (err) {
+        // Handle errors..
+        var errorCode = err.code;
+        var errorMessage = err.message;
+
+        console.log(errorCode, errorMessage);
+        });
+
+    //Empty input fields:
+    $('#email').text("");
+    $('#password').text("");
+
+    });
+
+// 'Log-Out' button clicked:
+
+    $('#log-out').click(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      // If a user is logged in:
+      if (currentUser) {
+
+        // Sign Out existing user
+        firebase.auth().signOut();
+        }             
+        
+    //Empty input fields:
+    $('#email').text("");
+    $('#password').text("");
+
+    });
+
+// Handle Auth Events:
+
+  auth.onAuthStateChanged(function(user) {
+    currentUser = user;  
+    if (user) {
+        console.log(user)
+        $("#log-out").removeClass("hide");
+        $("#sign-in").addClass("hide");
+        $("#sign-up").addClass("hide");
+      }
+      else {
+        console.log("not signed in");
+                  
+        $("#log-out").addClass("hide");
+        $("#sign-in").removeClass("hide");
+        $("#sign-up").removeClass("hide");
+      }
+  })
+
+
+// ---------------  GOOGLE (GMAIL) EMAIL & PASSWORD ----------------
+
+var provider = new firebase.auth.GoogleAuthProvider();
+
+  // Ask user's permission to view contacts
+    provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+
+  $("#google-sign-in").click(function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+  // Sign-In with pop-up (Not reccommended for mobile):
+    
+    if (currentUser) {
+        return false;
+    }
+
+    if ($(window).width() > 680) {
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        currentUser = user;
+        // ...
+        }).catch(function(error) {
+        // Handle Errors
+          var errorCode = error.code;
+          var errorMessage = error.message;
+        // The email of the user's account used.
+          var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+        // ...
+        });
+    }
+
+    else {
+
+        firebase.auth().signInWithRedirect(provider);
+        firebase.auth().getRedirectResult().then(function(result) {
+  
+            if (result.credential) {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = result.credential.accessToken;
+            // ...
+          }
+            // The signed-in user info.
+            var user = result.user;
+            currentUser = user;
+            }).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            // ...
+        });
+    } 
+  })
+
+
+
+  </script>
+
+  <!-- jquery Link -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+  <!-- Materialize.css javascript and parallax initiation link -->
+  <script src="assets/javascript/materialize.js"></script>
+  <script src="assets/javascript/init.js"></script>
+
+  <!-- HTML link to our JavaScript file -->
+  <script src="assets/javascript/app.js"></script>
+
+</body>
+</html>
