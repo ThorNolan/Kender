@@ -157,11 +157,10 @@ $("#find-weather").on("click", function(event){
 var sunny = "happy";
 var rainy = "sad";
 var cloudy = "chill";
-var 
 
 //global variables to make Ajax work
-var token = "BQACzEOHfP2J3FNokH2pOUrIn5ffydy8LWpb-ErfudMBZgEtMI-bW9VLuZ8ne9tA0dkX2SNlirYfyhE1QY_pERmo60EbNUWpBGbEkQaX9v92LUHAsGvxPJrlOTuMZ-8BFjXstF8l4fM7WH2fjBcWaUngRlpIh__UggSbzpsomM3BeMEzRE9CGAGT5FRJX5Fj-NhPbQdxV5iVfnmQgMO4WJltncYOSePIf8OE7U5AYv9zFxlidyhchQ9yaZWnI2wTxhse4SJegnoQd7VfwPw"
-var search = "happy"
+var token = "BQCwJwcr0h6jJWwkpt_ygPjHcFmVw8iwdKhDBigr5Syi7LmCj5bAyCHpNnKvfPFWKSfgFAvJ5Zx3tJYathYQlBsarLH9Kgp_W9ERA4g8-uAkTdz5EbWQ2kaugmNNF1ulckv0AQxpmof7i1nxcRPTcYsL06Oy03BB9LvR5LCAFyJwupDFXFYYnsEXMToOJKjsTFr0-1mgOim4tXHNU6z0pblh7AoyMWY4eKtR3lRjBnt9aNCPtRGaR1UBEzZU3xjEq5CW6udsDZGSyGjw_Co";
+var search = "happy";
 var type = "playlist";
 
 //Random Number Generator function 
@@ -204,6 +203,11 @@ $(".button").on("click", function () {
                 console.log("Name: " + playlistName)
                 console.log("Image: " + playlistImage)
                 console.log("Playlist Link: " + playlistLinks)
+
+              // displaying information onto a card
+                $("#playlist-name").text("Playlist Name: " + playlistName);
+                $("#playlist-link").attr("href", playlistLinks);
+                $("#playlist-image").attr("src", playlistImage);
 
             }
             randomPlaylistInfo();
