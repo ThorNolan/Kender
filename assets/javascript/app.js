@@ -1,5 +1,6 @@
 
 
+
 // TESTED API 
 
 
@@ -40,15 +41,42 @@ $.ajax({
 // ==============================END LIAM SECTION=============================== //
 
 // =============================ATIF SECTION==================================== //
+
+//-Atif-------Weather Search Detail Firebase Database---------------
+
+// Initialize Firebase
+        
+/*var config = {
+  apiKey: "AIzaSyC7sFmSCyeTZUQnW-wof8SBv4EV5uLvsxA",
+  authDomain: "weather-project-d144f.firebaseapp.com",
+  databaseURL: "https://weather-project-d144f.firebaseio.com",
+  projectId: "weather-project-d144f",
+  storageBucket: "weather-project-d144f.appspot.com",
+  messagingSenderId: "455614600456"
+};
+firebase.initializeApp(config);
+// Create a variable to reference the database.
+var database = firebase.database();
+
+      var weatherSearch = "";
+      var eventsSearch = "";
+      var musicPlaylist = "";
+
+      */
+
+//-Atif-------Weather Search By click on Submit---------------
+$(".row").hide();
 $("#find-weather").on("click", function(event){
 
     event.preventDefault();
-
-    var inputLocation = $("#weatherInput").val();      //"San Francisco";
     
-   // for(var i=0; i<5;i++){
+    $(".row").show();
 
-    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q="+ inputLocation +"&units=imperial&APPID=f7d032505cb605fdfe25eebe96d9ab15&cnt=5";
+    var inputLocation = $("#weatherInput").val();     
+    
+   
+
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q="+ inputLocation +"&units=imperial&APPID=f7d032505cb605fdfe25eebe96d9ab15&cnt=3";
  
      $.ajax({
        url: queryURL,
@@ -63,29 +91,37 @@ $("#find-weather").on("click", function(event){
 
        for(var i=0; i<responseList.length;i++){
 
-       $(".display-weather").append("<h1> Weather Details</h1>");
+        
+        var cardNum = i+1;
 
+        $("#card-"+cardNum).empty();
+      
        var cityName = apiResponse.city.name;
 
-       $(".display-weather").append("<p> City Name:  "+ cityName+"</p>");
+       $("#card-"+cardNum).append("City Name:  "+ cityName);
+
 
        var country = apiResponse.city.country;
-       $(".display-weather").append("<p> Country Name  :" + country + " </p>");
+       $("#card-"+cardNum).append("<p> Country Name  :" + country + " </p>");
 
        var windSpeed = responseList[i].wind.speed;
 
-       $(".display-weather").append("<p> Wind Speed  :" + windSpeed + " </p>");
+       $("#card-"+cardNum).append("<p> Wind Speed  :" + windSpeed + " </p>");
        
        var pressure = responseList[i].main.pressure;
-       $(".display-weather").append("<p> Pressure  :" + pressure + " </p>");
+       $("#card-"+cardNum).append("<p> Pressure  :" + pressure + " </p>");
 
        var temperature = responseList[i].main.temp;
-       $(".display-weather").append("<p>  Temperature (F)  :" + temperature + " </p>");
+       $("#card-"+cardNum).append("<p>  Temperature (F)  :" + temperature + " </p>");
         
        var rainStatus = responseList[i].weather[0].description;
-       $(".display-weather").append("<p> Rain Status  :" + rainStatus + " </p>");
+       $("#card-"+cardNum).append("<p> Rain Status  :" + rainStatus + " </p>");
 
-      
+
+            
+
+           
+            
        }
        
    })
