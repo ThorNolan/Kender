@@ -15,6 +15,7 @@
 $("#find-weather").on("click", function(event){
 
     event.preventDefault();
+    
 
     var inputLocation = $("#weatherInput").val();     
     
@@ -35,29 +36,37 @@ $("#find-weather").on("click", function(event){
 
        for(var i=0; i<responseList.length;i++){
 
-       $(".display-weather").append("<h1> Weather Details</h1>");
+        
+        var cardNum = i+1;
 
+        $("#card-"+cardNum).empty();
+      
        var cityName = apiResponse.city.name;
 
-       $(".display-weather").append("<p> City Name:  "+ cityName+"</p>");
+       $("#card-"+cardNum).append("City Name:  "+ cityName);
+
 
        var country = apiResponse.city.country;
-       $(".display-weather").append("<p> Country Name  :" + country + " </p>");
+       $("#card-"+cardNum).append("<p> Country Name  :" + country + " </p>");
 
        var windSpeed = responseList[i].wind.speed;
 
-       $(".display-weather").append("<p> Wind Speed  :" + windSpeed + " </p>");
+       $("#card-"+cardNum).append("<p> Wind Speed  :" + windSpeed + " </p>");
        
        var pressure = responseList[i].main.pressure;
-       $(".display-weather").append("<p> Pressure  :" + pressure + " </p>");
+       $("#card-"+cardNum).append("<p> Pressure  :" + pressure + " </p>");
 
        var temperature = responseList[i].main.temp;
-       $(".display-weather").append("<p>  Temperature (F)  :" + temperature + " </p>");
+       $("#card-"+cardNum).append("<p>  Temperature (F)  :" + temperature + " </p>");
         
        var rainStatus = responseList[i].weather[0].description;
-       $(".display-weather").append("<p> Rain Status  :" + rainStatus + " </p>");
+       $("#card-"+cardNum).append("<p> Rain Status  :" + rainStatus + " </p>");
 
-      
+
+            
+
+           
+            
        }
        
    })

@@ -10,9 +10,28 @@
 /* ==============================END LIAM SECTION=============================== */
 
 /* =============================ATIF SECTION==================================== */
+body{
+  background:rgb(20, 19, 19);
+  
+  margin: 2% 2% 2% 2%;
+}
 
+.card-content{
+  
+  background: black;
+  color: yellow;
+}
+.card .card-image .card-title {
 
-
+  color: white;
+  font-size: 14px;
+  padding: 2% 0 1% 4%;
+  
+  
+}
+.card{
+  width: 450px;
+}
 
 
 
