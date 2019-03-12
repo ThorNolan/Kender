@@ -76,7 +76,7 @@ $(document).ready(function () {
                 $(".appendEventsHere").append(newSlide);
             }
             if ($(".carousel").hasClass("initialized")) {
-                $(".carousel").removeClass("initialized")
+                $(".carousel").removeClass("initialized");
             } else {
                 $('.carousel.carousel-slider').carousel({
                     fullWidth: true,
@@ -84,6 +84,7 @@ $(document).ready(function () {
                 });
             }
 
+            $('.modal').modal();
 
             // function for building carousel pieces 
             function makeEventCarousel(eventInfo, num) {
@@ -92,18 +93,18 @@ $(document).ready(function () {
                 var newItem = $("<div>").addClass("carousel-item").attr("href", "#" + numbersArr[num] + "!");
                 var eventImage = $("<img>").attr("src", eventInfo.logo.original.url);
                 var eventTitle = $("<h2>").attr("text", eventInfo.name.text)
-                var eventDescription = $("<p>").attr("text", eventInfo.description.text);
+                // var eventDescription = $("<p>").attr("text", eventInfo.description.text);
 
                 // build modal trigger buttons for each carousel item
                 var newModalBtnHolder = $("<div>").addClass("carousel-fixed-item center");
-                var newModalBtn = $("<a>").addClass("waves-effect waves-light btn modal-trigger").attr("href", "#modal" + num);
+                var newModalBtn = $("<a>").addClass("waves-effect waves-light btn modal-trigger").attr("href", "#modal" + num).text("More Info");
 
                 // build modal popups, triggered by the buttons above
                 var newModalHolder = $("<div>").addClass("modal").attr("id", "modal" + num);
                 var modalDiv = $("<div>").addClass("modal-content");
-                var modalDescription = $("<p>").attr("text", eventInfo.description.text);
-                var modalFooterDiv = $("div").addClass("modal-footer");
-                var modalFooterItem = $("<a>").addClass("modal-close waves-effect waves-green btn-flat");
+                var modalDescription = $("<p>").text(eventInfo.description.text);
+                var modalFooterDiv = $("<div>").addClass("modal-footer");
+                var modalFooterItem = $("<a>").addClass("modal-close waves-effect waves-green btn-flat").text("Close");
 
         // <div id="modal1" class="modal">
         // <div class="modal-content">
@@ -120,13 +121,14 @@ $(document).ready(function () {
                 newItem.append(eventImage);
                 // newItem.append(eventDescription);
                 newItem.append(eventTitle);
+                newModalBtnHolder.append(newModalBtn);
+                newItem.append(newModalBtnHolder);
 
                 // append my modal button to each carousel item div
-                newModalBtnHolder.append(newModalBtn);
                 modalDiv.append(modalDescription);
                 modalFooterDiv.append(modalFooterItem);
-                modalDiv.append(modalFooterDiv);
-                newModalHolder.append(modalDiv);
+                newModalHolder.append(modalDiv, modalFooterDiv);
+                $(".modalHolder").append(newModalHolder);
 
                 return newItem;
             }
