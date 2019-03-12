@@ -63,12 +63,35 @@ label{
   
  
 }
-#card-1, #card-2, #card-3, #card-4, #card-5{
-color:white;
+#card-1:hover, #card-2:hover, #card-3:hover{
+
+background: black;
+
 
 }
+#card-1, #card-2, #card-3{
+
+  visibility: visible;
+  
+  
+  }
+  @media only screen and (max-width : 600px) {
+    
+    #index-banner .section {
+      top: 0;
+    }
+
+    .card .card-image img {
+  
+      width: 100%;
+      height:370px;
+      
+     
+    }
 
 
+
+  }
 
 
 
