@@ -48,7 +48,7 @@ var inputLocation = "San Francisco";
   // Eventbrite pull and ajax call
   $(document).ready(function () {
 
-    // Some APIs will give us a cross-origin (CORS) error. This small function is a fix for that error. You can also check out the chrome extenstion (https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en).
+    // fix for potential cors error
     jQuery.ajaxPrefilter(function (options) {
       if (options.crossDomain && jQuery.support.cors) {
         options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
@@ -57,8 +57,8 @@ var inputLocation = "San Francisco";
 
     $(document).on("submit", ".event-form", function (event) {
       event.preventDefault()
-      var paid = $("#paid").val()
       
+      var paid = $("#paid").val()
       var eventName = $("#eventName").val()
       var location = $("#location").val()
 
@@ -68,10 +68,26 @@ var inputLocation = "San Francisco";
       }).then(function (response) {
         console.log(response)
 
-        
-        for (var i = 0; i < response.events.length ; i++) {
-          console.log(i)
-          $(".appendHere").append('<div class="eventPic-holder"><img src="'+ response.events[i].logo.original.url+'" class="eventPic"></div><h1 class="eventName">'+response.events[i].name.text+'</h1><p class="eventText">'+response.events[i].description.text+'</p><hr>')
+        for (var i = 0; i < response.events.length; i++) {
+            var newSlide = makeEventCarousel(response.events[i]);      
+            $(".carousel-item").first().addClass("active");
+            $(".appendEventsHere").append(newSlide);
+
+
+        //   $(".appendEventsHere").append('<div class="carousel-fixed-item"><img src="'+ response.events[i].logo.original.url+'" class="eventPic"><h1 class="eventName">'+response.events[i].name.text+'</h1><p class="eventText">'+response.events[i].description.text+'</p></div>')
+        }
+        // re-initialize my carousel after my for loop is done
+        $(".appendEventsHere").carousel();
+
+        function makeEventCarousel(eventInfo) {
+           
+            //Build carousel pieces
+            var newItem = $("<a>").addClass("carousel-item");
+            var eventImage = $("<img>").attr("src", eventInfo.logo.original.url);
+           
+            newItem.append(eventImage);
+           
+            return newItem;
         }
 
       });
@@ -83,6 +99,7 @@ var inputLocation = "San Francisco";
 
 
 
+//   $(".appendEventsHere").append('<div class="eventPic-holder"><img src="'+ response.events[i].logo.original.url+'" class="eventPic"></div><h1 class="eventName">'+response.events[i].name.text+'</h1><p class="eventText">'+response.events[i].description.text+'</p><hr>')
 
 
 

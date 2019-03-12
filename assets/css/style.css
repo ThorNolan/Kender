@@ -25,10 +25,68 @@
 
 /* =================================THOR SECTION=================================== */
 
+/* my stylings */
+
+.brand-logo {
+    width: 64px;
+    height: 64px;
+}
+
+/* stylings for eventbrite form */
+
+input {
+    display: block;
+  }
+
+  .ebForm {
+    display: inline-block;
+    padding: 20px;
+    border: black solid 2px;
+
+  }
+  .ebForm * {
+    margin: 10px;
+  }
+
+  /* .apiReturns {
+    /* position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    /* border: solid 2px black;
+    padding: 20px;
+    overflow: auto;
+    height: 70%;
+  }
+
+  .eventName {
+    margin-top: -2px;
+  }
+
+  .eventPic {
+    height: 50px;
+    width: 50px;
+    margin: 3px;
+  }
+  .eventPic-holder {
+    shape-outside: circle(50% at 50% 50%);
+   -webkit-shape-outside: circle(50% at 50% 50%);
+   /* -webkit-clip-path: circle(50% at 50% 50%); */
+   /* clip-path: circle(50% at 50% 50%); */
+   /* float: left;
+   position: relative;
+  }
+
+  .eventText {
+    width: 80%;
+    margin: auto;
+    line-height: 1.5;
+  } */ 
+
 /* stuff from the parallax template for general stylings */
 nav ul a,
 nav .brand-logo {
-  color: #444;
+  color:#424242;
 }
 
 p {
