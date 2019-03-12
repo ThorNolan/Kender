@@ -48,7 +48,8 @@ $.ajax({
 // Eventbrite pull and ajax call
 $(document).ready(function () {
 
-    var numbersArr = ["one", "two", "three", "four", "five"];
+    // this array is for the href of the carousel items, which is necessary as it's how materialize keeps track of each slide
+    var numbersArr = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen"];
 
     // fix for potential cors error
     jQuery.ajaxPrefilter(function (options) {
@@ -70,27 +71,19 @@ $(document).ready(function () {
         }).then(function (response) {
             console.log(response)
             // response.events.length
-            for (var i = 0; i < 5; i++) {
+            for (var i = 0; i < 15; i++) {
                 var newSlide = makeEventCarousel(response.events[i], i);
-                // $(".carousel-item").first().addClass("active");
                 $(".appendEventsHere").append(newSlide);
-                //    return(newSlide);
-                //   $(".appendEventsHere").append('<div class="carousel-fixed-item"><img src="'+ response.events[i].logo.original.url+'" class="eventPic"><h1 class="eventName">'+response.events[i].name.text+'</h1><p class="eventText">'+response.events[i].description.text+'</p></div>')
             }
             if ($(".carousel").hasClass("initialized")) {
                 $(".carousel").removeClass("initialized")
-            }
-            else {
+            } else {
                 $('.carousel.carousel-slider').carousel({
                     fullWidth: true,
                     indicators: true
                 });
             }
 
-            // re-initialize my carousel after my for loop is done
-            // $(".carousel.carousel-slider").carousel();
-
-            // $(".carousel").addClass("initialized");
 
             // function for building carousel pieces 
             function makeEventCarousel(eventInfo, num) {
@@ -101,9 +94,39 @@ $(document).ready(function () {
                 var eventTitle = $("<h2>").attr("text", eventInfo.name.text)
                 var eventDescription = $("<p>").attr("text", eventInfo.description.text);
 
+                // build modal trigger buttons for each carousel item
+                var newModalBtnHolder = $("<div>").addClass("carousel-fixed-item center");
+                var newModalBtn = $("<a>").addClass("waves-effect waves-light btn modal-trigger").attr("href", "#modal" + num);
+
+                // build modal popups, triggered by the buttons above
+                var newModalHolder = $("<div>").addClass("modal").attr("id", "modal" + num);
+                var modalDiv = $("<div>").addClass("modal-content");
+                var modalDescription = $("<p>").attr("text", eventInfo.description.text);
+                var modalFooterDiv = $("div").addClass("modal-footer");
+                var modalFooterItem = $("<a>").addClass("modal-close waves-effect waves-green btn-flat");
+
+        // <div id="modal1" class="modal">
+        // <div class="modal-content">
+        // <h4>Modal Header</h4>
+        // <p>A bunch of text</p>
+        // </div>
+        // <div class="modal-footer">
+        // <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        // </div>
+        // </div>
+            
+
+                // append my carousel pieces
                 newItem.append(eventImage);
-                newItem.append(eventDescription);
+                // newItem.append(eventDescription);
                 newItem.append(eventTitle);
+
+                // append my modal button to each carousel item div
+                newModalBtnHolder.append(newModalBtn);
+                modalDiv.append(modalDescription);
+                modalFooterDiv.append(modalFooterItem);
+                modalDiv.append(modalFooterDiv);
+                newModalHolder.append(modalDiv);
 
                 return newItem;
             }
@@ -111,19 +134,7 @@ $(document).ready(function () {
         });
     })
 
-    // $('.carousel.carousel-slider').carousel({
-    //     fullWidth: true,
-    //     indicators: true
-    // });
-
 })
-
-
-
-//   $(".appendEventsHere").append('<div class="eventPic-holder"><img src="'+ response.events[i].logo.original.url+'" class="eventPic"></div><h1 class="eventName">'+response.events[i].name.text+'</h1><p class="eventText">'+response.events[i].description.text+'</p><hr>')
-
-
-
 
 // ================================END THOR SECTION================================= //
 

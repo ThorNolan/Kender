@@ -48,40 +48,17 @@ input {
     margin: 10px;
   }
 
-  /* .apiReturns {
-    /* position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
-    /* border: solid 2px black;
-    padding: 20px;
-    overflow: auto;
-    height: 70%;
-  }
+/* stylings for eventbrite carousel items */
+.carousel {
+    width: 600px;
+    height: auto;
+}
 
-  .eventName {
-    margin-top: -2px;
-  }
+.carousel img {
+    height: 100%;
+}
 
-  .eventPic {
-    height: 50px;
-    width: 50px;
-    margin: 3px;
-  }
-  .eventPic-holder {
-    shape-outside: circle(50% at 50% 50%);
-   -webkit-shape-outside: circle(50% at 50% 50%);
-   /* -webkit-clip-path: circle(50% at 50% 50%); */
-   /* clip-path: circle(50% at 50% 50%); */
-   /* float: left;
-   position: relative;
-  }
 
-  .eventText {
-    width: 80%;
-    margin: auto;
-    line-height: 1.5;
-  } */ 
 
 /* stuff from the parallax template for general stylings */
 nav ul a,
