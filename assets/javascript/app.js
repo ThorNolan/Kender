@@ -311,9 +311,9 @@ function spotifySearch() {
 
 
       //print the information
-      console.log("Name: " + playlistName)
-      console.log("Image: " + playlistImage)
-      console.log("Playlist Link: " + playlistLinks)
+      // console.log("Name: " + playlistName)
+      // console.log("Image: " + playlistImage)
+      // console.log("Playlist Link: " + playlistLinks)
 
       // displaying information onto a card
       $("#playlist-name").text("Playlist Name: " + playlistName);
@@ -322,7 +322,7 @@ function spotifySearch() {
       $("#spotify-player").attr("src", "https://open.spotify.com/embed/playlist/" + playlistID);
 
     }
-    console.log(response);
+    // console.log(response);
     randomPlaylistInfo();
   })
 }
