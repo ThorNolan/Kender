@@ -43,8 +43,7 @@
       var todayRainStatus = responseList[0].weather[0].description;
 
       
-      //console.log(apiResponse);
-      //console.log(responseList);
+      
 
       // using for loops grabbing the weather forcast as per response array length
        for(var i=0; i<responseList.length;i++){
