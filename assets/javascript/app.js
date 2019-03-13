@@ -26,6 +26,8 @@ $(document).ready(function () {
 
     event.preventDefault();
 
+    $(".card").show();
+
     var inputLocation = $("#weatherInput").val();     
     
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q="+ inputLocation +"&units=imperial&APPID=f7d032505cb605fdfe25eebe96d9ab15&cnt=3";
