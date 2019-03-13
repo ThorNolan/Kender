@@ -46,6 +46,17 @@ $.ajax({
 
 
 
+// var config = {
+//   apiKey: "AIzaSyCGraU6ufyrzjduCPdI2TrBuDgtxWMKcgI",
+//   authDomain: "weekender-app.firebaseapp.com",
+//   databaseURL: "https://weekender-app.firebaseio.com",
+//   projectId: "weekender-app",
+//   storageBucket: "weekender-app.appspot.com",
+//   messagingSenderId: "812263140834"
+// };
+// firebase.initializeApp(config);
+
+
 
 
 

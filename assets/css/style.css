@@ -4,28 +4,44 @@
   max-width: 50%;
   font-family: 'Coustard', serif;
   font-weight: 900;
-  font-size: 3.6rem;
+  font-size: 3.8rem;
 }
 
 
 h5 {
   text-align: right;
 }
-#logo-name {
-  font-size: 3rem;
+
+.welcome-header {
+  text-align: left;
 }
 
-#main-container {
+#do-more {
+  font-size: 3.6rem;
+}
+
+#name-logo {
+  font-size: 3rem;
+  color: gold;
+}
+
+#form-container {
   padding: 15px;
   margin-top: 5%;
   max-width: 45%;
-  background-color: rgba(255,255,255,.4)
+  background-color: rgba(255,255,255,.5); 
 }
 
-button {
+/* .btn {
+  margin-left: auto;
+  /* display: block; 
+} */
+
+
+/* #button-containter {
   margin: auto;
   display: block;
-}
+} */
 
 .hide {
   display: none;

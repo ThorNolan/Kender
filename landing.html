@@ -18,6 +18,9 @@
   <link href="http://fonts.googleapis.com/css?family=Leckerli+One|Coustard:900" rel="stylesheet" type="text/css" />
 
 </head>
+
+
+
 <body>
 
 <!-- Video BG -->
@@ -27,19 +30,40 @@
         <source src="assets/images/Lake - 161.ogv" type="video/ogg">
     </video>
   </div>
-<!-- Video BG -->
+
+<!-- Welcome Header -->
   <div class="container" id="welcome-container">
-    <h1 class = "welcome-header">Plan less. Do more.</h1>
+    <h1 class = "welcome-header">
+      Plan less.
+      <br> 
+      <span id="do-more">Do more.</span>
+    </h1>
    <br>
-    <h5>Welcome to <span id=name-logo>Weekender.</span></h5>
+    <h5>Welcome to <span id=name-logo>kender.</span></h5>
   </div>
   
-  <div class="container" id="main-container">
-    
-
-    
+<!-- Form and Buttons -->
+  <div class="container" id="form-container">
     <div class="row">
         <form class="col s12">
+        <div class="row hide" id = "sign-up-form">
+          <div class="input-field col s12" id ="first-name">
+            <input id="first-name-input" type="text" class="validate">
+            <label for="first-name-input">First Name</label>
+          </div>
+          <div class="input-field col s12" id ="last-name">
+            <input id="last-name-input" type="text" class="validate">
+            <label for="last-name-input">Last Name</label>
+          </div>
+          <div class="input-field col s2" id ="age">
+              <input id="age-input" type="text" class="validate">
+              <label for="age-input">Age</label>
+            </div>
+            <div class="input-field col s10" id ="location">
+              <input id="location-input" type="text" class="validate">
+              <label for="location-input">Location</label>
+            </div>
+          </div>
         <div class="row">
             <div class="input-field col s12">
             <input id="email" type="email" class="validate">
@@ -55,46 +79,107 @@
             </div>
         </div>
 
-        <button class="waves-effect waves-light btn" id="sign-up"><i class="material-icons left">waves</i>Sign Up</button>
+
+        <button class="waves-effect hide waves-light btn" id="sign-up"><i class="material-icons left">waves</i>Sign Up</button>
         <button class="waves-effect waves-light btn" id="sign-in"><i class="material-icons left">cloud</i>Sign In</button>
         <button class="waves-effect hide waves-light btn" id="log-out"><i class="material-icons left">cloud</i>Log Out</button>
-        <button class="waves-effect waves-light btn" id="google-sign-in"><i class="material-icons left">cloud</i>Sign in with Google</button>
+  
+        <p id= "sign-up-line">Don't have an account? <a href="#" id="sign-up-link">Sign Up</a></p>
+        <p class="hide" id= "sign-in-line">Already have an account? <a href="#" id="sign-in-link">Sign In</a></p>
 
        
         </form>
     </div>
   </div>
 
+  <div class = "container hide" id = "info-container">
+    
+      <div class = "row">
+        <div class = "col s4">
+          <button class = "event-btn btn" val= "event-1">Event</button>
+        </div>
+        <div class = "col s4">
+          <button class = "event-btn btn" val= "event-1">Event</button>
+        </div> 
+        <div class = "col s4">
+          <button class = "event-btn btn" val= "event-1">Event</button>
+        </div> 
+      </div>
+      
+      <div class = "row">
+        <div class = "col s4">
+          <button class = "event-btn btn" val= "event-1">Event</button>
+        </div>
+        <div class = "col s4">
+          <button class = "event-btn btn" val= "event-1">Event</button>
+        </div> 
+        <div class = "col s4">
+          <button class = "event-btn btn" val= "event-1">Event</button>
+        </div> 
+      </div>
+  
+      <div class = "row">
+        <div class = "col s4">
+          <button class = "event-btn btn" val= "event-1">Event</button>
+        </div>
+        <div class = "col s4">
+          <button class = "event-btn btn" val= "event-1">Event</button>
+        </div> 
+        <div class = "col s4">
+          <button class = "event-btn btn" val= "event-1">Event</button>
+        </div> 
+      </div>
+  
+  
+    </div>
+  
+  
 
 
 
 
   <!-- Firebase Reference -->
   <!-- <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script> -->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>  
+<script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
 
-  <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
-    
-    <script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyCGraU6ufyrzjduCPdI2TrBuDgtxWMKcgI",
-        authDomain: "weekender-app.firebaseapp.com",
-        databaseURL: "https://weekender-app.firebaseio.com",
-        projectId: "weekender-app",
-        storageBucket: "weekender-app.appspot.com",
-        messagingSenderId: "812263140834"
-    };
-    firebase.initializeApp(config);
-// </script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAOidefTN5O1Z32JUVc_DMiltfmLigriCs",
+    authDomain: "kender-9c76d.firebaseapp.com",
+    databaseURL: "https://kender-9c76d.firebaseio.com",
+    projectId: "kender-9c76d",
+    storageBucket: "kender-9c76d.appspot.com",
+    messagingSenderId: "650256419440"
+  };
+  firebase.initializeApp(config);
+</script>
 
-<!--Handle page events-->
-<script>    
-  var currentUser;
-  var auth = firebase.auth();
+<script>
+
+// Handle Auth events
+var currentUser = {};
+var fireBaseUser;
+var auth = firebase.auth();
 
 
 // ---------------  ANONYMOUS EMAIL & PASSWORD ----------------
+
+// Sign in page:
+var database = firebase.database();
+
+$("#sign-up-link").click(function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  $("#sign-up").removeClass("hide");
+  $("#sign-in").addClass("hide");
+  $("#sign-up-line").addClass("hide");
+  $("#google-sign-in").removeClass("hide");
+  $("#sign-up-form").removeClass("hide");
+
+
+})
 
 
 // 'Sign-Up' button clicked:
@@ -103,7 +188,18 @@
     e.stopPropagation();
     var email = $('#email').val();
     var password = $('#password').val()
+
+    currentUser.email = email;
+    currentUser.age = $("age").val();
+    currentUser.location = $("#location").val();
+    currentUser.firstName = $("#first-name-input").val();
+    currentUser.lastName = $("#last-name-input").val();
+    // currentUser.location
+
     console.log(email, password);
+    // if (email && password) {
+    //   window.location = "https://thornolan.github.io/Project-1/";
+    //   }
 
         // Register a new user
         firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -115,10 +211,12 @@
         console.log(errorCode, errorMessage);
         });
 
-    //Empty input fields:
-    $('#email').text("");
-    $('#password').text("");
+      database.ref().set({
 
+      fbUser: currentUser,
+      count: 1
+
+      });
     });
 
 
@@ -130,6 +228,9 @@
         var email = $('#email').val();
         var password = $('#password').val()
         console.log(email, password);
+        if (email && password) {
+        window.location = "https://thornolan.github.io/Project-1/";
+        }
     
     // Sign in existing user
     firebase.auth().signInWithEmailAndPassword(email, password)
@@ -141,11 +242,7 @@
         console.log(errorCode, errorMessage);
         });
 
-    //Empty input fields:
-    $('#email').text("");
-    $('#password').text("");
 
-    });
 
 // 'Log-Out' button clicked:
 
@@ -153,22 +250,18 @@
         e.preventDefault();
         e.stopPropagation();
       // If a user is logged in:
-      if (currentUser) {
+      if (fireBaseUser) {
 
         // Sign Out existing user
         firebase.auth().signOut();
         }             
         
-    //Empty input fields:
-    $('#email').text("");
-    $('#password').text("");
-
     });
 
 // Handle Auth Events:
 
   auth.onAuthStateChanged(function(user) {
-    currentUser = user;  
+    fireBaseUser = user;  
     if (user) {
         console.log(user)
         $("#log-out").removeClass("hide");
@@ -180,77 +273,16 @@
                   
         $("#log-out").addClass("hide");
         $("#sign-in").removeClass("hide");
-        $("#sign-up").removeClass("hide");
       }
   })
 
+// Push initial user data to FB
 
-// ---------------  GOOGLE (GMAIL) EMAIL & PASSWORD ----------------
-
-var provider = new firebase.auth.GoogleAuthProvider();
-
-  // Ask user's permission to view contacts
-    provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-
-  $("#google-sign-in").click(function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-
-  // Sign-In with pop-up (Not reccommended for mobile):
-    
-    if (currentUser) {
-        return false;
-    }
-
-    if ($(window).width() > 680) {
-        firebase.auth().signInWithPopup(provider).then(function(result) {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        var token = result.credential.accessToken;
-        // The signed-in user info.
-        var user = result.user;
-        currentUser = user;
-        // ...
-        }).catch(function(error) {
-        // Handle Errors
-          var errorCode = error.code;
-          var errorMessage = error.message;
-        // The email of the user's account used.
-          var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-          var credential = error.credential;
-        // ...
-        });
-    }
-
-    else {
-
-        firebase.auth().signInWithRedirect(provider);
-        firebase.auth().getRedirectResult().then(function(result) {
+});
   
-            if (result.credential) {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            var token = result.credential.accessToken;
-            // ...
-          }
-            // The signed-in user info.
-            var user = result.user;
-            currentUser = user;
-            }).catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // The email of the user's account used.
-            var email = error.email;
-            // The firebase.auth.AuthCredential type that was used.
-            var credential = error.credential;
-            // ...
-        });
-    } 
-  })
+// </script>
 
-
-
-  </script>
+<!--Handle page events-->
 
   <!-- jquery Link -->
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
