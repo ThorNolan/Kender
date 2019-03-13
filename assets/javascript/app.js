@@ -13,110 +13,93 @@ $(document).ready(function () {
 
 // =============================ATIF SECTION==================================== //
 
-//-Atif-------Weather Search Detail Firebase Database---------------
+    var mood;
 
-// Initialize Firebase
+    //----hide all cards with startup--------- 
 
-/*var config = {
-  apiKey: "AIzaSyC7sFmSCyeTZUQnW-wof8SBv4EV5uLvsxA",
-  authDomain: "weather-project-d144f.firebaseapp.com",
-  databaseURL: "https://weather-project-d144f.firebaseio.com",
-  projectId: "weather-project-d144f",
-  storageBucket: "weather-project-d144f.appspot.com",
-  messagingSenderId: "455614600456"
-};
-firebase.initializeApp(config);
-// Create a variable to reference the database.
-var database = firebase.database();
-
-      var weatherSearch = "";
-      var eventsSearch = "";
-      var musicPlaylist = "";
-
-      */
-
-//-Atif-------Weather Search By click on Submit---------------
-var mood;
-
-$(".card").hide();
-$("#find-weather").on("click", function (event) {
-
-  event.preventDefault();
-
-  $(".card").show();
-
-  var inputLocation = $("#weatherInput").val();
-
-  var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + inputLocation + "&units=imperial&APPID=f7d032505cb605fdfe25eebe96d9ab15&cnt=3";
-
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function (response) {
+    $(".card").hide();
 
 
-    var apiResponse = response;
-    var responseList = response.list;
-    var todayRainStatus = responseList[0].weather[0].description;
-    console.log(apiResponse);
-    console.log(responseList);
+    //--------Weather Search By click on Submit---------------
+    
+    $("#find-weather").on("click", function(event){
 
-    for (var i = 0; i < responseList.length; i++) {
+    event.preventDefault();
 
+    var inputLocation = $("#weatherInput").val();     
+    
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q="+ inputLocation +"&units=imperial&APPID=f7d032505cb605fdfe25eebe96d9ab15&cnt=3";
+ 
+     $.ajax({
+       url: queryURL,
+       method: "GET"
+   }).then(function (response) {
+        
+      // Weather API response store in different variable as per requirement      
+       var apiResponse = response;
+      var responseList = response.list;
+      // todayRainStatus grap the status of rain from api.
+      var todayRainStatus = responseList[0].weather[0].description;
 
-      var cardNum = i + 1;
+      
+      
 
-      $("#card-" + cardNum).empty();
+      // using for loops grabbing the weather forcast as per response array length
+       for(var i=0; i<responseList.length;i++){
 
-      var cityName = apiResponse.city.name;
+        // variable CardNum adding i+1 for display the forcast result in different cards
+        var cardNum = i+1;
+         // initialize the card as empty
+        $("#card-"+cardNum).empty();
+      
+        // Store the api response city name in variable cityName
+       var cityName = apiResponse.city.name;
+        // appending the api response into web
+       $("#card-"+cardNum).append("City Name:  "+ cityName);
 
-      $("#card-" + cardNum).append("City Name:  " + cityName);
+       var country = apiResponse.city.country;
+       $("#card-"+cardNum).append("<p> Country Name  :" + country + " </p>");
 
+       var windSpeed = responseList[i].wind.speed;
 
-      var country = apiResponse.city.country;
-      $("#card-" + cardNum).append("<p> Country Name  :" + country + " </p>");
+       $("#card-"+cardNum).append("<p> Wind Speed  :" + windSpeed + " </p>");
+       
+       var pressure = responseList[i].main.pressure;
+       $("#card-"+cardNum).append("<p> Pressure  :" + pressure + " </p>");
 
-      var windSpeed = responseList[i].wind.speed;
-
-      $("#card-" + cardNum).append("<p> Wind Speed  :" + windSpeed + " </p>");
-
-      var pressure = responseList[i].main.pressure;
-      $("#card-" + cardNum).append("<p> Pressure  :" + pressure + " </p>");
-
-      var temperature = responseList[i].main.temp;
-      $("#card-" + cardNum).append("<p>  Temperature (F)  :" + temperature + " </p>");
-
-      var rainStatus = responseList[i].weather[0].description;
-      $("#card-" + cardNum).append("<p> Rain Status  :" + rainStatus + " </p>");
-
-
-
-
-    }
-
-
-    // using information we gathered from the weather API, use that to assign a search term "mood" to a spotify playlist search
-    if (todayRainStatus === "clear sky") {
-      mood = "happy";
-    }
-
-    if (todayRainStatus.includes("clouds")) {
-      mood = "chill";
-    }
-    if (todayRainStatus.includes("rain")) {
-      mood = "sad";
-    }
-    if (todayRainStatus.includes("thunderstsorm")) {
-      mood = "angry";
-    }
-    if (todayRainStatus.includes("snow")) {
-      mood = "lo-fi";
-    }
+       var temperature = responseList[i].main.temp;
+       $("#card-"+cardNum).append("<p>  Temperature (F)  :" + temperature + " </p>");
+        
+       var rainStatus = responseList[i].weather[0].description;
+       $("#card-"+cardNum).append("<p> Rain Status  :" + rainStatus + " </p>");
 
 
-    spotifySearch();
-  })
+                      
+            
+       }
+       
+       
+       // using information we gathered from the weather API, use that to assign a search term "mood" to a spotify playlist search 
+       if (todayRainStatus === "clear sky") {
+         mood = "happy";
+       }
+      
+       if (todayRainStatus.includes("clouds")) {
+         mood = "chill";
+       }
+       if (todayRainStatus.includes("rain")) {
+         mood = "sad";
+       }
+       if (todayRainStatus.includes("thunderstsorm")) {
+         mood = "angry";
+       }
+       if (todayRainStatus.includes( "snow")) {
+         mood = "lo-fi";
+       }
+       
 
+       spotifySearch();
+   })
 });
 
 
