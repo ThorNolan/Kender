@@ -1,4 +1,4 @@
-
+$(document).ready(function () {
 
 // ============================LIAM SECTION===================================== //
 
@@ -19,13 +19,12 @@
 
     $(".card").hide();
 
+
     //--------Weather Search By click on Submit---------------
     
     $("#find-weather").on("click", function(event){
 
     event.preventDefault();
-    
-    $(".card").show();
 
     var inputLocation = $("#weatherInput").val();     
     
@@ -101,7 +100,6 @@
 
        spotifySearch();
    })
-
 });
 
 
@@ -111,10 +109,6 @@
 
 // =================================THOR SECTION=================================== //
 
-// Eventbrite pull and ajax call
-$(document).ready(function () {
-
-
     // this array is for the href of the carousel items, which is necessary as it's how materialize keeps track of each slide
     var numbersArr = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"];
 
@@ -123,55 +117,23 @@ $(document).ready(function () {
         var newId = "";
         var idOptions = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
       
-        for (var i = 0; i < 5; i++)
+        for (var i = 0; i < 5; i++) {
           newId += idOptions.charAt(Math.floor(Math.random() * idOptions.length));
-      
+        }    
         return newId;
     }
      
 
-  // fix for potential cors error
-  jQuery.ajaxPrefilter(function (options) {
-    if (options.crossDomain && jQuery.support.cors) {
-      options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
-    }
-  });
-
-  $(document).on("submit", ".event-form", function (event) {
-    event.preventDefault()
-
-    var paid = $("#paid").val()
-    var eventName = $("#eventName").val()
-    var location = $("#location").val()
-
-    $.ajax({
-      url: 'https://www.eventbriteapi.com/v3/events/search/?q=' + eventName + '&price=' + paid + '&location.address=' + location + '&token=RQIFLDPFZLH3JYH4WYJQ',
-      method: "GET"
-    }).then(function (response) {
-      console.log(response)
-      // response.events.length
-      for (var i = 0; i < 15; i++) {
-        var newSlide = makeEventCarousel(response.events[i], i);
-        $(".appendEventsHere").append(newSlide);
-      }
-      if ($(".carousel").hasClass("initialized")) {
-        $(".carousel").removeClass("initialized");
-      } else {
-        $('.carousel.carousel-slider').carousel({
-          fullWidth: true,
-          indicators: true
-        });
-      }
-
-      $('.modal').modal();
-
-      // function for building carousel pieces 
-      function makeEventCarousel(eventInfo, num) {
-
+    // fix for potential cors error
+    jQuery.ajaxPrefilter(function (options) {
+        if (options.crossDomain && jQuery.support.cors) {
+        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+        }
+    });
 
     // Function that triggers on submit of the form on the main page
     $(document).on("submit", ".event-form", function (event) {
-        event.preventDefault()
+        event.preventDefault();
         $(".carousel").empty();
 
         var paid = $("#paid").val()
@@ -186,10 +148,10 @@ $(document).ready(function () {
         }).then(function (response) {
 
             //console.log(response)
-            
+             
             for (var i = 0; i < 20; i++) {
                 // make sure that the response has an image (at events.logo) before adding it to the carousel
-                if ( response.events[i].logo && response.events[i].logo.original.url !== "null" && response.events[i].logo.original.url !== "undefined") {
+                if ( response.events[i].logo && response.events[i].logo !== "null" && response.events[i].logo !== "undefined") {
                     var newSlide = makeEventCarousel(response.events[i], i);
                     $(".appendEventsHere").append(newSlide);
                 }
@@ -227,126 +189,126 @@ $(document).ready(function () {
                 var modalDescription = $("<p>").text(eventInfo.description.text);
                 var modalFooterDiv = $("<div>").addClass("modal-footer");
                 var modalFooterItem = $("<a>").addClass("modal-close waves-effect waves-red btn-flat").text("Close");
-            
+
 
                 // append my carousel pieces
                 newItem.append(eventImage);
+                // newItem.append(eventDescription);
                 newItem.prepend(eventTitle);
                 newModalBtnHolder.append(newModalBtn);
                 newItem.append(newModalBtnHolder);
 
+                // append my modal button to each carousel item div
+                modalDiv.append(modalDescription);
+                modalFooterDiv.append(modalFooterItem);
+                newModalHolder.append(modalDiv, modalFooterDiv);
+                $(".modalHolder").append(newModalHolder);
 
-        // append my carousel pieces
-        newItem.append(eventImage);
-        // newItem.append(eventDescription);
-        newItem.append(eventTitle);
-        newModalBtnHolder.append(newModalBtn);
-        newItem.append(newModalBtnHolder);
+                return newItem;
+            }
 
-        // append my modal button to each carousel item div
-        modalDiv.append(modalDescription);
-        modalFooterDiv.append(modalFooterItem);
-        newModalHolder.append(modalDiv, modalFooterDiv);
-        $(".modalHolder").append(newModalHolder);
+        });
+    });
+      // ================================END THOR SECTION================================= //
 
-        return newItem;
+
+      // ================================SAM SECTION========================================= //
+      //variables to be adjusted and attributed to the response from the wheather API
+
+
+
+      // function spotifySearch() {
+      //   var token = "BQDvRdxI4daEWe_mmypbg18g-PiyZ6Qb0LVZ3MXyycjHs2oqPF2DZdRFbyY8laG-cfKbrIZVY6-aUFUyTF5PR9ii7fTL7KgYJwiVZLbJe1Q5u8McFuvBGtIGeTZHDb4TMlJjWz0xnG3bjFrOV2PXIOxsoa1_T3_IJHpSNcjXOfFkRAjUubSLsBS9fzYo8ZOJAXG_kGH3hYpIwCN2mxMX3ajjSqnz3LiboM3o8UkyfjeYVKRjSNzW_xHd-N2JRkozu3ur3GG1VwVuAPSZ3Pw"
+
+      //   var type = "playlist";
+      //   var accessToken = "BQAoA0tEEWMoSpiBKOJ4YTDkIp8vXx48j1MRfOHqaKzqsmCi_QwLjG2EbQmw0VAlRpGbHJ8RI2OpLNaSKbxiio3RqpbQEjxvs-Y3pM0kCQbhuoi8K2VyRH5F4FFiP4rCqdZhbr_qPWGSzqgPtsLYoi0vcdj79KGCCuT3lZk9EYZpddQ07-3mAguF_IUx3c0"
+      //   var refreshToken = "AQBPGEZ_-JZI17n-Khd0DAf7l1_KIxgU3NpISIJf9fLNKshcspuHU-U85UCv_-sdVw5ZBkEPDHizgxyFv0GMpMUz7uVfosb3B6pBvqjcT-ywXQuK4WUnlfPsxZYj7zVmYfs37Q"
+
+      //   $.ajax({
+      //     url: 'https://api.spotify.com/v1/search?type=' + type + '&query=' + mood,
+      //     headers: {
+      //       "access_token": accessToken,
+      //       "token_type": "Bearer",
+      //       "scope": "user-read-private user-read-email",
+      //       "expires_in": 3600,
+      //       "refresh_token": refreshToken
+      //     }
+      function spotifySearch() {
+        var token = "BQDYJJfjZW67xyVc1I3lwvTjQtRERIrCQ-uwLhGyN54kC7YT-ynU-EOMJ7x3VFkuic3zRgrIDi1HxXpHAp1dlyzImG3PA58--wFba7M-f4Tn5pXuQ1JkxJJS917HpQqgQyIstprjEF6xgBLciHMZ3yZg_jfhtdg7xXE7oB50p3vKmr5lHgStHLjRiF_goiivF5Xk8MNyOOb1ZPJykfT7qlnQsp2mUbZKrrN7RdXSVJ-64t2pq_W2f_cwzc6JQ3rCYDrYQvk1WEQq1CL_3Ms"
+      
+        var type = "playlist";
+      
+      
+        $.ajax({
+          url: 'https://api.spotify.com/v1/search?type=' + type + '&query=' + mood,
+          headers: {
+            Authorization: 'Bearer ' + token
+          }
+        }).then(function (response) {
+          function randomPlaylistInfo() {
+
+            //random number between 0 and 19 to target a random playlist
+            var i = randomNumber(20)
+
+            //variables to point to the Image, Link to playlist, and Playlist Name
+            var playlists = response.playlists.items;
+            var playlistImage = playlists[i].images[0].url;
+            var playlistLinks = playlists[i].external_urls.spotify;
+            var playlistName = playlists[i].name;
+            var playlistID = playlists[i].id
+
+
+            //print the information
+            // console.log("Name: " + playlistName)
+            // console.log("Image: " + playlistImage)
+            // console.log("Playlist Link: " + playlistLinks)
+
+            // displaying information onto a card
+            $("#playlist-name").text("Playlist Name: " + playlistName);
+            $("#playlist-link").attr("href", playlistLinks);
+            $("#playlist-image").attr("src", playlistImage);
+            $("#spotify-player").attr("src", "https://open.spotify.com/embed/playlist/" + playlistID);
+
+          }
+          // console.log(response);
+          randomPlaylistInfo();
+        })
       }
 
-    });
-  })
-
-})
-
-// ================================END THOR SECTION================================= //
-
-
-// ================================SAM SECTION========================================= //
-//variables to be adjusted and attributed to the response from the wheather API
 
 
 
-function spotifySearch() {
-  var token = "BQDgGRWgZLRxGLJ7YhevF-QcITwjH6U4nB2R8n5w7nuLR7fBkjqQ01V399eKZCBMCi5xJpGO_azLekFJhNE7g0hO9ss6C8zB-87MmzvrtEU6qUdjrzqQ8P65KfYaNAJtAdisWDnXYrsXOXhQhSC1goqaPAqFfs6T94zj2Po3QCVVYmUT0Z5g6G3fTyG-iZUzaX1fxImx-Hhg0yOlIWRMC6URJlSK1OV5gmEBj3BtOtQ5UP-GNcdER8huTU8nE0-jYmtHnZmR9TwjQ0MGVcs"
+      //Random Number Generator function 
+      function randomNumber(int) {
+        return Math.floor(Math.random() * int);
+      }
 
-  var type = "playlist";
-  var accessToken = "BQAoA0tEEWMoSpiBKOJ4YTDkIp8vXx48j1MRfOHqaKzqsmCi_QwLjG2EbQmw0VAlRpGbHJ8RI2OpLNaSKbxiio3RqpbQEjxvs-Y3pM0kCQbhuoi8K2VyRH5F4FFiP4rCqdZhbr_qPWGSzqgPtsLYoi0vcdj79KGCCuT3lZk9EYZpddQ07-3mAguF_IUx3c0"
-  var refreshToken = "AQBPGEZ_-JZI17n-Khd0DAf7l1_KIxgU3NpISIJf9fLNKshcspuHU-U85UCv_-sdVw5ZBkEPDHizgxyFv0GMpMUz7uVfosb3B6pBvqjcT-ywXQuK4WUnlfPsxZYj7zVmYfs37Q"
+      $("#happy").on("click", function () {
+        mood = "happy"
+        spotifySearch();
+      })
 
-  $.ajax({
-    url: 'https://api.spotify.com/v1/search?type=' + type + '&query=' + mood,
-    headers: {
-      "access_token": accessToken,
-   "token_type": "Bearer",
-   "scope": "user-read-private user-read-email",
-   "expires_in": 3600,
-   "refresh_token": refreshToken
-    }
-  }).then(function (response) {
-    function randomPlaylistInfo() {
+      $("#sad").on("click", function () {
+        mood = "sad"
+        spotifySearch();
+      })
 
-      //random number between 0 and 19 to target a random playlist
-      var i = randomNumber(20)
+      $("#chill").on("click", function () {
+        mood = "chill"
+        spotifySearch();
+      })
 
-      //variables to point to the Image, Link to playlist, and Playlist Name
-      var playlists = response.playlists.items;
-      var playlistImage = playlists[i].images[0].url;
-      var playlistLinks = playlists[i].external_urls.spotify;
-      var playlistName = playlists[i].name;
-      var playlistID = playlists[i].id
+      $("#angry").on("click", function () {
+        mood = "angry"
+        spotifySearch();
+      })
 
+      $("#lo-fi").on("click", function () {
+        mood = "lo-fi"
+        spotifySearch();
+      })
 
-      //print the information
-      // console.log("Name: " + playlistName)
-      // console.log("Image: " + playlistImage)
-      // console.log("Playlist Link: " + playlistLinks)
-
-      // displaying information onto a card
-      $("#playlist-name").text("Playlist Name: " + playlistName);
-      $("#playlist-link").attr("href", playlistLinks);
-      $("#playlist-image").attr("src", playlistImage);
-      $("#spotify-player").attr("src", "https://open.spotify.com/embed/playlist/" + playlistID);
-
-    }
-    // console.log(response);
-    randomPlaylistInfo();
-  })
-}
-
-
-
-
-//Random Number Generator function 
-function randomNumber(int) {
-  return Math.floor(Math.random() * int);
-}
-
-$("#happy").on("click", function () {
-  mood = "happy"
-  spotifySearch();
-})
-
-$("#sad").on("click", function () {
-  mood = "sad"
-  spotifySearch();
-})
-
-$("#chill").on("click", function () {
-  mood = "chill"
-  spotifySearch();
-})
-
-$("#angry").on("click", function () {
-  mood = "angry"
-  spotifySearch();
-})
-
-$("#lo-fi").on("click", function () {
-  mood = "lo-fi"
-  spotifySearch();
-})
-
-
-
+    
 //function to call on info from a random playlist
 
 
@@ -357,3 +319,4 @@ $("#lo-fi").on("click", function () {
 
 
 // ================================END SAM SECTION======================================= //
+})
