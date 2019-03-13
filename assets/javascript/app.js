@@ -12,32 +12,15 @@
 
 // =============================ATIF SECTION==================================== //
 
-//-Atif-------Weather Search Detail Firebase Database---------------
+    var mood;
 
-// Initialize Firebase
-        
-/*var config = {
-  apiKey: "AIzaSyC7sFmSCyeTZUQnW-wof8SBv4EV5uLvsxA",
-  authDomain: "weather-project-d144f.firebaseapp.com",
-  databaseURL: "https://weather-project-d144f.firebaseio.com",
-  projectId: "weather-project-d144f",
-  storageBucket: "weather-project-d144f.appspot.com",
-  messagingSenderId: "455614600456"
-};
-firebase.initializeApp(config);
-// Create a variable to reference the database.
-var database = firebase.database();
+    //----hide all cards with startup--------- 
 
-      var weatherSearch = "";
-      var eventsSearch = "";
-      var musicPlaylist = "";
+    $(".card").hide();
 
-      */
-
-//-Atif-------Weather Search By click on Submit---------------
-var mood;
-$(".card").hide();
-$("#find-weather").on("click", function(event){
+    //--------Weather Search By click on Submit---------------
+    
+    $("#find-weather").on("click", function(event){
 
     event.preventDefault();
     
@@ -55,10 +38,12 @@ $("#find-weather").on("click", function(event){
       // Weather API response store in different variable as per requirement      
        var apiResponse = response;
       var responseList = response.list;
-      // todayRainStatus grap the status of rain.
+      // todayRainStatus grap the status of rain from api.
       var todayRainStatus = responseList[0].weather[0].description;
-      console.log(apiResponse);
-      console.log(responseList);
+
+      
+      //console.log(apiResponse);
+      //console.log(responseList);
 
       // using for loops grabbing the weather forcast as per response array length
        for(var i=0; i<responseList.length;i++){
