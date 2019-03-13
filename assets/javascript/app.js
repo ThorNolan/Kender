@@ -52,24 +52,26 @@ $("#find-weather").on("click", function(event){
        method: "GET"
    }).then(function (response) {
         
-       
+      // Weather API response store in different variable as per requirement      
        var apiResponse = response;
       var responseList = response.list;
+      // todayRainStatus grap the status of rain.
       var todayRainStatus = responseList[0].weather[0].description;
-       console.log(apiResponse);
+      console.log(apiResponse);
       console.log(responseList);
 
+      // using for loops grabbing the weather forcast as per response array length
        for(var i=0; i<responseList.length;i++){
 
-        
+        // variable CardNum adding i+1 for display the forcast result in different cards
         var cardNum = i+1;
-
+         // initialize the card as empty
         $("#card-"+cardNum).empty();
       
+        // Store the api response city name in variable cityName
        var cityName = apiResponse.city.name;
-
+        // appending the api response into web
        $("#card-"+cardNum).append("City Name:  "+ cityName);
-
 
        var country = apiResponse.city.country;
        $("#card-"+cardNum).append("<p> Country Name  :" + country + " </p>");
@@ -93,11 +95,11 @@ $("#find-weather").on("click", function(event){
        }
        
        
-       // using information we gathered from the weather API, use that to assign a search term "mood" to a spotify playlist search
+       // using information we gathered from the weather API, use that to assign a search term "mood" to a spotify playlist search 
        if (todayRainStatus === "clear sky") {
          mood = "happy";
        }
-       
+      
        if (todayRainStatus.includes("clouds")) {
          mood = "chill";
        }
