@@ -37,8 +37,9 @@
   
   <!-- // =============================ATIF SECTION==================================== // -->
 
-  <div>
+
     <h1>Weekend Warrior</h1>
+    <div class="form-display">
   <form id="weather-form">
 
       <label for="weather-input"></label>
@@ -48,15 +49,14 @@
       <!-- This button will trigger our AJAX call -->
       <input id="find-weather" type="submit">
     </form>   
-  
-      
+        
     </div>
 
   
   
   <div class="weather-container">
    <div class="row">
-      <div class="col s12 m3 l3">
+      <div class="col s12 m6 l4">
         <div class="card">
           <div class="card-image">
             <img src="./assets/images/storm-w5.gif">
@@ -67,7 +67,7 @@
             </div>
         </div>
       </div>
-         <div class="col s12 m3 l3">
+         <div class="col s12 m6 l4">
            <div class="card">
              <div class="card-image">
                <img src="./assets/images/storm-w2.gif">
@@ -79,7 +79,7 @@
            </div>
          </div>
       
-           <div class="col s12 m3 l3">
+           <div class="col s12 m6 l4">
              <div class="card">
                <div class="card-image">
                  <img src="./assets/images/storm-w3.gif">
@@ -190,9 +190,29 @@
 
     <div class="row">
       <div class="col s12 center">
-        <h3><i class="mdi-content-send indigo-text text-darken-3"></i></h3>
-        <h4 class= "indigo-text text-darken-3">Contact Us</h4>
-        <p class="left-align indigo-text text-darken-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+
+        <!-- Form for eventbrite inputs -->
+          <div class="ebForm">
+            <form action="#" class="event-form">
+              <select id="paid" name="paid">
+                <option value="free">Free</option>
+                <option value="paid">Paid</option>
+              </select>
+          
+              <input type="text" id="eventName" placeholder="Event Category">
+              <input type="text" id="location" placeholder="location">
+              <input type="submit" name="eventForm" id="eventForm">
+            </form>
+          </div>
+  
+          <div class="carousel carousel-slider center appendEventsHere">
+              
+          </div>
+          
+          <div class="modalHolder">
+              
+                
+        </div>
       </div>
     </div>
 
@@ -246,30 +266,6 @@
     </div>
   </div>
 </footer>
-
-<br>
-<!-- Form for eventbrite inputs -->
-<div class="ebForm">
-  <form action="#" class="event-form">
-    <select id="paid" name="paid">
-      <option value="free">Free</option>
-      <option value="paid">Paid</option>
-    </select>
-
-    <input type="text" id="eventName" placeholder="Event Category">
-    <input type="text" id="location" placeholder="location">
-    <input type="submit" name="eventForm" id="eventForm">
-  </form>
-</div>
-
-<div class="carousel carousel-slider appendEventsHere">
-    
-</div>
-
-<div class="modalHolder">
-
-</div>
-  
   
   
   <!-- // ================================END THOR SECTION================================= // -->

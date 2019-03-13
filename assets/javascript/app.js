@@ -1,47 +1,5 @@
 
 
-
-// TESTED API 
-
-
-//$("#userSubmit").on("click", function() {
-
-
-
-
-var inputLocation = "london";//$("#userInput").val();
-var unit = "&units=imperial";
-
-
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + inputLocation + "&APPID=f7d032505cb605fdfe25eebe96d9ab15";
-
-$.ajax({
-  url: queryURL,
-  method: "GET"
-}).then(function (response) {
-
-  console.log(response);
-
-})
-
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + inputLocation + "&APPID=f7d032505cb605fdfe25eebe96d9ab15";
-
-$.ajax({
-  url: queryURL,
-  method: "GET"
-}).then(function (response) {
-
-  console.log(response);
-
-})
-
-
-//})
-
-
-
-// We can get weather[0"] , rain[1h"] ,name , temperature wind speed and more from api response
-
 // ============================LIAM SECTION===================================== //
 
 
@@ -79,98 +37,87 @@ var database = firebase.database();
 
 //-Atif-------Weather Search By click on Submit---------------
 var mood;
-$(".row").hide();
-$("#find-weather").on("click", function (event) {
 
-  event.preventDefault();
+$(".card").hide();
+$("#find-weather").on("click", function(event){
 
-  $(".row").show();
+    event.preventDefault();
+    
+    $(".card").show();
 
-  var inputLocation = $("#weatherInput").val();
+    var inputLocation = $("#weatherInput").val();     
+    
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q="+ inputLocation +"&units=imperial&APPID=f7d032505cb605fdfe25eebe96d9ab15&cnt=3";
+ 
+     $.ajax({
+       url: queryURL,
+       method: "GET"
+   }).then(function (response) {
+        
+       
+       var apiResponse = response;
+      var responseList = response.list;
+      var todayRainStatus = responseList[0].weather[0].description;
+       console.log(apiResponse);
+      console.log(responseList);
 
+       for(var i=0; i<responseList.length;i++){
 
+        
+        var cardNum = i+1;
 
-  var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + inputLocation + "&units=imperial&APPID=f7d032505cb605fdfe25eebe96d9ab15&cnt=3";
+        $("#card-"+cardNum).empty();
+      
+       var cityName = apiResponse.city.name;
 
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function (response) {
-
-
-    var apiResponse = response;
-    var responseList = response.list;
-    var todayRainStatus = responseList[0].weather[0].description;
-    console.log(apiResponse);
-    console.log(responseList);
-
-    for (var i = 0; i < responseList.length; i++) {
-
-
-      var cardNum = i + 1;
-
-      $("#card-" + cardNum).empty();
-
-      var cityName = apiResponse.city.name;
-
-      $("#card-" + cardNum).append("City Name:  " + cityName);
-
-
-      var country = apiResponse.city.country;
-      $("#card-" + cardNum).append("<p> Country Name  :" + country + " </p>");
-
-      var windSpeed = responseList[i].wind.speed;
-
-      $("#card-" + cardNum).append("<p> Wind Speed  :" + windSpeed + " </p>");
-
-      var pressure = responseList[i].main.pressure;
-      $("#card-" + cardNum).append("<p> Pressure  :" + pressure + " </p>");
-
-      var temperature = responseList[i].main.temp;
-      $("#card-" + cardNum).append("<p>  Temperature (F)  :" + temperature + " </p>");
-
-      var rainStatus = responseList[i].weather[0].description;
-      $("#card-" + cardNum).append("<p> Rain Status  :" + rainStatus + " </p>");
+       $("#card-"+cardNum).append("City Name:  "+ cityName);
 
 
+       var country = apiResponse.city.country;
+       $("#card-"+cardNum).append("<p> Country Name  :" + country + " </p>");
+
+       var windSpeed = responseList[i].wind.speed;
+
+       $("#card-"+cardNum).append("<p> Wind Speed  :" + windSpeed + " </p>");
+       
+       var pressure = responseList[i].main.pressure;
+       $("#card-"+cardNum).append("<p> Pressure  :" + pressure + " </p>");
+
+       var temperature = responseList[i].main.temp;
+       $("#card-"+cardNum).append("<p>  Temperature (F)  :" + temperature + " </p>");
+        
+       var rainStatus = responseList[i].weather[0].description;
+       $("#card-"+cardNum).append("<p> Rain Status  :" + rainStatus + " </p>");
 
 
+                      
+            
+       }
+       
+       
+       // using information we gathered from the weather API, use that to assign a search term "mood" to a spotify playlist search
+       if (todayRainStatus === "clear sky") {
+         mood = "happy";
+       }
+       
+       if (todayRainStatus.includes("clouds")) {
+         mood = "chill";
+       }
+       if (todayRainStatus.includes("rain")) {
+         mood = "sad";
+       }
+       if (todayRainStatus.includes("thunderstsorm")) {
+         mood = "angry";
+       }
+       if (todayRainStatus.includes( "snow")) {
+         mood = "lo-fi";
+       }
+       
 
-
-    }
-
-
-    // using information we gathered from the weather API, use that to assign a search term "mood" to a spotify playlist search
-    if (todayRainStatus === "clear sky") {
-      mood = "happy";
-    }
-
-    if (todayRainStatus.includes("clouds")) {
-      mood = "chill";
-    }
-    if (todayRainStatus.includes("rain")) {
-      mood = "sad";
-    }
-    if (todayRainStatus.includes("thunderstsorm")) {
-      mood = "angry";
-    }
-    if (todayRainStatus.includes("snow")) {
-      mood = "lo-fi";
-    }
-
-
-    spotifySearch();
-  })
+       spotifySearch();
+   })
 
 });
-
-
-
-
-
-
-
-
 
 
 
@@ -182,8 +129,21 @@ $("#find-weather").on("click", function (event) {
 // Eventbrite pull and ajax call
 $(document).ready(function () {
 
-  // this array is for the href of the carousel items, which is necessary as it's how materialize keeps track of each slide
-  var numbersArr = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen"];
+
+    // this array is for the href of the carousel items, which is necessary as it's how materialize keeps track of each slide
+    var numbersArr = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"];
+
+    // use this to make a random string to be used as a unique id, instead of the above numbersArr
+    function makeID() {
+        var newId = "";
+        var idOptions = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      
+        for (var i = 0; i < 5; i++)
+          newId += idOptions.charAt(Math.floor(Math.random() * idOptions.length));
+      
+        return newId;
+    }
+     
 
   // fix for potential cors error
   jQuery.ajaxPrefilter(function (options) {
@@ -223,32 +183,72 @@ $(document).ready(function () {
       // function for building carousel pieces 
       function makeEventCarousel(eventInfo, num) {
 
-        //Build carousel pieces
-        var newItem = $("<div>").addClass("carousel-item").attr("href", "#" + numbersArr[num] + "!");
-        var eventImage = $("<img>").attr("src", eventInfo.logo.original.url);
-        var eventTitle = $("<h2>").attr("text", eventInfo.name.text)
-        // var eventDescription = $("<p>").attr("text", eventInfo.description.text);
 
-        // build modal trigger buttons for each carousel item
-        var newModalBtnHolder = $("<div>").addClass("carousel-fixed-item center");
-        var newModalBtn = $("<a>").addClass("waves-effect waves-light btn modal-trigger").attr("href", "#modal" + num).text("More Info");
+    // Function that triggers on submit of the form on the main page
+    $(document).on("submit", ".event-form", function (event) {
+        event.preventDefault()
+        $(".carousel").empty();
 
-        // build modal popups, triggered by the buttons above
-        var newModalHolder = $("<div>").addClass("modal").attr("id", "modal" + num);
-        var modalDiv = $("<div>").addClass("modal-content");
-        var modalDescription = $("<p>").text(eventInfo.description.text);
-        var modalFooterDiv = $("<div>").addClass("modal-footer");
-        var modalFooterItem = $("<a>").addClass("modal-close waves-effect waves-green btn-flat").text("Close");
+        var paid = $("#paid").val()
+        var eventName = $("#eventName").val()
+        var location = $("#location").val()
+        var isPopulated = false;
 
-        // <div id="modal1" class="modal">
-        // <div class="modal-content">
-        // <h4>Modal Header</h4>
-        // <p>A bunch of text</p>
-        // </div>
-        // <div class="modal-footer">
-        // <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-        // </div>
-        // </div>
+        // ajax call to the eventbrite API
+        $.ajax({
+            url: 'https://www.eventbriteapi.com/v3/events/search/?q=' + eventName + '&price=' + paid + '&location.address=' + location + '&token=RQIFLDPFZLH3JYH4WYJQ',
+            method: "GET"
+        }).then(function (response) {
+
+            //console.log(response)
+            
+            for (var i = 0; i < 20; i++) {
+                // make sure that the response has an image (at events.logo) before adding it to the carousel
+                if ( response.events[i].logo && response.events[i].logo.original.url !== "null" && response.events[i].logo.original.url !== "undefined") {
+                    var newSlide = makeEventCarousel(response.events[i], i);
+                    $(".appendEventsHere").append(newSlide);
+                }
+            }
+
+            // this prevents an error where the carousel can no longer initalize new items after it has already been initialized once
+            if ($(".carousel").hasClass("initialized")) {
+                $(".carousel").removeClass("initialized");
+            } else {
+                $('.carousel.carousel-slider').carousel({
+                    fullWidth: true,
+                    indicators: true
+                });
+            }
+
+            // Initialize anything with the .modal class
+            $('.modal').modal();
+
+            // Function for putting together all my carousel components
+            function makeEventCarousel(eventInfo, num) {
+
+                // Build carousel pieces
+                var newItem = $("<div>").addClass("carousel-item").attr("href", "#" + numbersArr[num] + "!");
+                var eventImage = $("<img>").attr("src", eventInfo.logo.original.url);
+                var eventTitle = $("<h2>").text(eventInfo.name.text);
+
+                // build modal trigger buttons for each carousel item
+                var newModalBtnHolder = $("<div>").addClass("carousel-fixed-item center");
+                var uniqueModalId = makeID();
+                var newModalBtn = $("<a>").addClass("waves-effect waves-light indigo indigo-darken-3 light-text btn modal-trigger").attr("href", "#modal" + uniqueModalId).text("More Info");
+
+                // build modal popups, triggered by the buttons above by same-id attachment
+                var newModalHolder = $("<div>").addClass("modal").attr("id", "modal" + uniqueModalId);
+                var modalDiv = $("<div>").addClass("modal-content");
+                var modalDescription = $("<p>").text(eventInfo.description.text);
+                var modalFooterDiv = $("<div>").addClass("modal-footer");
+                var modalFooterItem = $("<a>").addClass("modal-close waves-effect waves-red btn-flat").text("Close");
+            
+
+                // append my carousel pieces
+                newItem.append(eventImage);
+                newItem.prepend(eventTitle);
+                newModalBtnHolder.append(newModalBtn);
+                newItem.append(newModalBtnHolder);
 
 
         // append my carousel pieces
