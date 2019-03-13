@@ -183,10 +183,10 @@ $("#find-weather").on("click", function(event){
 $(document).ready(function () {
 
     // this array is for the href of the carousel items, which is necessary as it's how materialize keeps track of each slide
-    var numbersArr = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen"];
+    var numbersArr = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"];
 
-    // use this to make a random string, instead of the above numbersArr
-    function makeid() {
+    // use this to make a random string to be used as a unique id, instead of the above numbersArr
+    function makeID() {
         var newId = "";
         var idOptions = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
       
@@ -194,7 +194,7 @@ $(document).ready(function () {
           newId += idOptions.charAt(Math.floor(Math.random() * idOptions.length));
       
         return newId;
-      }
+    }
       
 
     // fix for potential cors error
@@ -214,6 +214,7 @@ $(document).ready(function () {
         var location = $("#location").val()
         var isPopulated = false;
 
+        // ajax call to the eventbrite API
         $.ajax({
             url: 'https://www.eventbriteapi.com/v3/events/search/?q=' + eventName + '&price=' + paid + '&location.address=' + location + '&token=RQIFLDPFZLH3JYH4WYJQ',
             method: "GET"
@@ -221,13 +222,12 @@ $(document).ready(function () {
 
             console.log(response)
             
-            for (var i = 0; i < 15; i++) {
-                if ( response.logo.original.url[i] && response.logo.original.url[i] !== "null" && response.logo.original.url[i] !== "undefined") {
+            for (var i = 0; i < 20; i++) {
+                // make sure that the response has an image (at events.logo) before adding it to the carousel
+                if ( response.events[i].logo && response.events[i].logo.original.url !== "null" && response.events[i].logo.original.url !== "undefined") {
                     var newSlide = makeEventCarousel(response.events[i], i);
                     $(".appendEventsHere").append(newSlide);
                 }
-                // var newSlide = makeEventCarousel(response.events[i], i);
-                // $(".appendEventsHere").append(newSlide);
             }
 
             // this prevents an error where the carousel can no longer initalize new items after it has already been initialized once
@@ -240,10 +240,6 @@ $(document).ready(function () {
                 });
             }
 
-            // if( object && object !== "null" && object !== "undefined" ){
-            //     doSomething();
-            // }
-
             // Initialize anything with the .modal class
             $('.modal').modal();
 
@@ -253,15 +249,15 @@ $(document).ready(function () {
                 // Build carousel pieces
                 var newItem = $("<div>").addClass("carousel-item").attr("href", "#" + numbersArr[num] + "!");
                 var eventImage = $("<img>").attr("src", eventInfo.logo.original.url);
-                var eventTitle = $("<h2>").attr("text", eventInfo.name.text);
-                    eventTitle.addClass("text-light");
+                var eventTitle = $("<h2>").text(eventInfo.name.text);
 
                 // build modal trigger buttons for each carousel item
                 var newModalBtnHolder = $("<div>").addClass("carousel-fixed-item center");
-                var newModalBtn = $("<a>").addClass("waves-effect waves-light btn modal-trigger").attr("href", "#modal" + num).text("More Info");
+                var uniqueModalId = makeID();
+                var newModalBtn = $("<a>").addClass("waves-effect waves-light btn modal-trigger").attr("href", "#modal" + uniqueModalId).text("More Info");
 
-                // build modal popups, triggered by the buttons above
-                var newModalHolder = $("<div>").addClass("modal").attr("id", "modal" + num);
+                // build modal popups, triggered by the buttons above by same-id attachment
+                var newModalHolder = $("<div>").addClass("modal").attr("id", "modal" + uniqueModalId);
                 var modalDiv = $("<div>").addClass("modal-content");
                 var modalDescription = $("<p>").text(eventInfo.description.text);
                 var modalFooterDiv = $("<div>").addClass("modal-footer");

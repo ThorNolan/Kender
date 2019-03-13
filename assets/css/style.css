@@ -188,10 +188,15 @@ input {
 .carousel {
     width: 600px;
     height: auto;
+    float: right;
 }
 
 .carousel img {
     height: 100%;
+}
+
+.carousel h2 {
+    
 }
 
 
