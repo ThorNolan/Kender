@@ -185,6 +185,18 @@ $(document).ready(function () {
     // this array is for the href of the carousel items, which is necessary as it's how materialize keeps track of each slide
     var numbersArr = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen"];
 
+    // use this to make a random string, instead of the above numbersArr
+    function makeid() {
+        var newId = "";
+        var idOptions = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      
+        for (var i = 0; i < 5; i++)
+          newId += idOptions.charAt(Math.floor(Math.random() * idOptions.length));
+      
+        return newId;
+      }
+      
+
     // fix for potential cors error
     jQuery.ajaxPrefilter(function (options) {
         if (options.crossDomain && jQuery.support.cors) {
@@ -192,23 +204,33 @@ $(document).ready(function () {
         }
     });
 
+    // Function that triggers on submit of the form on the main page
     $(document).on("submit", ".event-form", function (event) {
         event.preventDefault()
+        $(".carousel").empty();
 
         var paid = $("#paid").val()
         var eventName = $("#eventName").val()
         var location = $("#location").val()
+        var isPopulated = false;
 
         $.ajax({
             url: 'https://www.eventbriteapi.com/v3/events/search/?q=' + eventName + '&price=' + paid + '&location.address=' + location + '&token=RQIFLDPFZLH3JYH4WYJQ',
             method: "GET"
         }).then(function (response) {
+
             console.log(response)
-            // response.events.length
+            
             for (var i = 0; i < 15; i++) {
-                var newSlide = makeEventCarousel(response.events[i], i);
-                $(".appendEventsHere").append(newSlide);
+                if ( response.logo.original.url[i] && response.logo.original.url[i] !== "null" && response.logo.original.url[i] !== "undefined") {
+                    var newSlide = makeEventCarousel(response.events[i], i);
+                    $(".appendEventsHere").append(newSlide);
+                }
+                // var newSlide = makeEventCarousel(response.events[i], i);
+                // $(".appendEventsHere").append(newSlide);
             }
+
+            // this prevents an error where the carousel can no longer initalize new items after it has already been initialized once
             if ($(".carousel").hasClass("initialized")) {
                 $(".carousel").removeClass("initialized");
             } else {
@@ -218,16 +240,21 @@ $(document).ready(function () {
                 });
             }
 
+            // if( object && object !== "null" && object !== "undefined" ){
+            //     doSomething();
+            // }
+
+            // Initialize anything with the .modal class
             $('.modal').modal();
 
-            // function for building carousel pieces 
+            // Function for putting together all my carousel components
             function makeEventCarousel(eventInfo, num) {
 
-                //Build carousel pieces
+                // Build carousel pieces
                 var newItem = $("<div>").addClass("carousel-item").attr("href", "#" + numbersArr[num] + "!");
                 var eventImage = $("<img>").attr("src", eventInfo.logo.original.url);
-                var eventTitle = $("<h2>").attr("text", eventInfo.name.text)
-                // var eventDescription = $("<p>").attr("text", eventInfo.description.text);
+                var eventTitle = $("<h2>").attr("text", eventInfo.name.text);
+                    eventTitle.addClass("text-light");
 
                 // build modal trigger buttons for each carousel item
                 var newModalBtnHolder = $("<div>").addClass("carousel-fixed-item center");
@@ -239,21 +266,10 @@ $(document).ready(function () {
                 var modalDescription = $("<p>").text(eventInfo.description.text);
                 var modalFooterDiv = $("<div>").addClass("modal-footer");
                 var modalFooterItem = $("<a>").addClass("modal-close waves-effect waves-green btn-flat").text("Close");
-
-        // <div id="modal1" class="modal">
-        // <div class="modal-content">
-        // <h4>Modal Header</h4>
-        // <p>A bunch of text</p>
-        // </div>
-        // <div class="modal-footer">
-        // <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-        // </div>
-        // </div>
             
 
                 // append my carousel pieces
                 newItem.append(eventImage);
-                // newItem.append(eventDescription);
                 newItem.append(eventTitle);
                 newModalBtnHolder.append(newModalBtn);
                 newItem.append(newModalBtnHolder);
