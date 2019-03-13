@@ -165,7 +165,7 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
 
-            console.log(response)
+            //console.log(response)
             
             for (var i = 0; i < 20; i++) {
                 // make sure that the response has an image (at events.logo) before adding it to the carousel
@@ -199,19 +199,19 @@ $(document).ready(function () {
                 // build modal trigger buttons for each carousel item
                 var newModalBtnHolder = $("<div>").addClass("carousel-fixed-item center");
                 var uniqueModalId = makeID();
-                var newModalBtn = $("<a>").addClass("waves-effect waves-light btn modal-trigger").attr("href", "#modal" + uniqueModalId).text("More Info");
+                var newModalBtn = $("<a>").addClass("waves-effect waves-light indigo indigo-darken-3 light-text btn modal-trigger").attr("href", "#modal" + uniqueModalId).text("More Info");
 
                 // build modal popups, triggered by the buttons above by same-id attachment
                 var newModalHolder = $("<div>").addClass("modal").attr("id", "modal" + uniqueModalId);
                 var modalDiv = $("<div>").addClass("modal-content");
                 var modalDescription = $("<p>").text(eventInfo.description.text);
                 var modalFooterDiv = $("<div>").addClass("modal-footer");
-                var modalFooterItem = $("<a>").addClass("modal-close waves-effect waves-green btn-flat").text("Close");
+                var modalFooterItem = $("<a>").addClass("modal-close waves-effect waves-red btn-flat").text("Close");
             
 
                 // append my carousel pieces
                 newItem.append(eventImage);
-                newItem.append(eventTitle);
+                newItem.prepend(eventTitle);
                 newModalBtnHolder.append(newModalBtn);
                 newItem.append(newModalBtnHolder);
 
