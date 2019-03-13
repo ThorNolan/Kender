@@ -36,12 +36,12 @@ var database = firebase.database();
 
 //-Atif-------Weather Search By click on Submit---------------
 var mood;
-$(".row").hide();
+$(".card").hide();
 $("#find-weather").on("click", function(event){
 
     event.preventDefault();
     
-    $(".row").show();
+    $(".card").show();
 
     var inputLocation = $("#weatherInput").val();     
     
