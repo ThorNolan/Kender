@@ -191,8 +191,8 @@ $(document).ready(function () {
 
         var paid = $("#paid").val()
         var eventName = $("#eventName").val()
-        var location = $("#location").val()
-        var isPopulated = false;
+        //var location = $("#location").val()
+        var location = $("#weatherInput").val()
 
         // ajax call to the eventbrite API
         $.ajax({
