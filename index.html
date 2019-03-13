@@ -277,16 +277,23 @@
   
   <br> <br> <br>
   <div class="row">
-    <div class="col s12 m4">
+    <div class="col s12 m4" style="float: left;">
       <div class="card">
         <div class="card-image">
           <img id="playlist-image" style="width:100%; height:auto;" src="">
         </div>
-        <div class="card-content light-green accent-3 black-text">
-          <p id="playlist-name"></p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col s12 m4" style="float: left;">
+      <div class="card">
+        <div class="card-image">
+          <img id="playlist-image" style="width:100%; height:auto;" src="">
         </div>
-        <div class="card-action blue-grey lighten-5">
-          <a href="#" id="playlist-link" class="black-text">Click here to listen to your playlist on Spotify</a>
+        <div class="card-action black">
+          <iframe id="spotify-player" src="" width="100%" height="380px" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         </div>
       </div>
     </div>
@@ -295,7 +302,12 @@
   
   
   
-  <button class="button">Click for new Playlist</button>
+  <p>not satisfied? Pick your mood</p>
+  <a class="waves-effect waves-light btn" id="happy">Happy</a>
+  <a class="waves-effect waves-light btn" id="sad">Sad</a>
+  <a class="waves-effect waves-light btn" id="chill">Chill</a>
+  <a class="waves-effect waves-light btn" id="angry">Angry</a>
+  <a class="waves-effect waves-light btn" id="lo-fi">Lo-fi</a>
   <!-- // ================================END SAM SECTION======================================= // -->
 
 
