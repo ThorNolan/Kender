@@ -131,6 +131,16 @@ label{
         1px 1px 0 #000;
 }
 
+#your-weekend {
+  font-size: 4rem;
+    color: black;
+    text-shadow:
+          -1px -1px 0 gold,
+          1px -1px 0 gold,
+          -1px 1px 0 gold,
+          1px 1px 0 gold;
+}
+
 #greeter-image {
   width: 260px;
   margin: auto;
