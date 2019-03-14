@@ -10,6 +10,7 @@
   <!-- Materialize.css Links -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!-- HTML to CSS file Link -->
   <link rel="stylesheet" type="text/css" href="assets/css/style.css" media="screen,projection"/>
@@ -36,10 +37,10 @@
     <h1 class = "welcome-header">
       Plan less.
       <br> 
-      <span id="do-more">Do more.</span>
+      Do <span id="do-more">more.</span>
     </h1>
    <br>
-    <h5>Welcome to <span id=name-logo>kender.</span></h5>
+    <h5>Welcome to <span id=name-logo>  kender.</span></h5>
   </div>
   
 <!-- Form and Buttons -->
@@ -72,10 +73,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s12" id = "password-box">
             <input id="password" type="password" class="validate">
             <label for="password">Password</label>
             <span class="helper-text" data-error="wrong"></span>
+            </div>
+
+            <div class="input-field hide col s6" id="password-confirm">
+                <input id="passwordConfirm" type="password">
+                <label id="lblPasswordConfirm" for="passwordConfirm" data-error="Passwords do not match" data-success="Password Match">Password (Confirm)</label>
             </div>
         </div>
 
@@ -83,6 +89,7 @@
         <button class="waves-effect hide waves-light btn" id="sign-up"><i class="material-icons left">waves</i>Sign Up</button>
         <button class="waves-effect waves-light btn" id="sign-in"><i class="material-icons left">cloud</i>Sign In</button>
         <button class="waves-effect hide waves-light btn" id="log-out"><i class="material-icons left">cloud</i>Log Out</button>
+        
   
         <p id= "sign-up-line">Don't have an account? <a href="#" id="sign-up-link">Sign Up</a></p>
         <p class="hide" id= "sign-in-line">Already have an account? <a href="#" id="sign-in-link">Sign In</a></p>
@@ -92,44 +99,48 @@
     </div>
   </div>
 
-  <div class = "container hide" id = "info-container">
+  
+
+  <div class = "container" id = "info-container">
     
       <div class = "row">
         <div class = "col s4">
-          <button class = "event-btn btn" val= "event-1">Event</button>
+          <button class = "interest btn" val= "hiking">Hiking</button>
         </div>
         <div class = "col s4">
-          <button class = "event-btn btn" val= "event-1">Event</button>
+          <button class = "interest btn" val= "music">Music</button>
         </div> 
         <div class = "col s4">
-          <button class = "event-btn btn" val= "event-1">Event</button>
+          <button class = "interest btn" val= "event-1">Education</button>
         </div> 
       </div>
       
       <div class = "row">
         <div class = "col s4">
-          <button class = "event-btn btn" val= "event-1">Event</button>
+          <button class = "interest btn" val= "event-1">Food</button>
         </div>
         <div class = "col s4">
-          <button class = "event-btn btn" val= "event-1">Event</button>
+          <button class = "interest btn" val= "event-1">Wine</button>
         </div> 
         <div class = "col s4">
-          <button class = "event-btn btn" val= "event-1">Event</button>
+          <button class = "interest btn" val= "event-1">Puppers</button>
         </div> 
       </div>
   
       <div class = "row">
         <div class = "col s4">
-          <button class = "event-btn btn" val= "event-1">Event</button>
+          <button class = "interest btn" val= "event-1">Sports</button>
         </div>
         <div class = "col s4">
-          <button class = "event-btn btn" val= "event-1">Event</button>
+          <button class = "interest btn" val= "event-1">Fitness</button>
         </div> 
         <div class = "col s4">
-          <button class = "event-btn btn" val= "event-1">Event</button>
+          <button class = "interest btn" val= "event-1">Games</button>
         </div> 
       </div>
   
+      <button class="waves-effect waves-light btn" id="sign-up"><i class="material-icons left">waves</i>Sign Up</button>
+
   
     </div>
   
@@ -158,10 +169,11 @@
 
 <script>
 
-// Handle Auth events
-var currentUser = {};
+// Global variables:
+var currentUser;
 var fireBaseUser;
 var auth = firebase.auth();
+var userInterests = [];
 
 
 // ---------------  ANONYMOUS EMAIL & PASSWORD ----------------
@@ -177,7 +189,9 @@ $("#sign-up-link").click(function(e) {
   $("#sign-up-line").addClass("hide");
   $("#google-sign-in").removeClass("hide");
   $("#sign-up-form").removeClass("hide");
-
+  $("#password-confirm").removeClass("hide");
+  $("#password-box").removeClass("s12");
+  $("#password-box").addClass("s6");
 
 })
 
@@ -186,43 +200,70 @@ $("#sign-up-link").click(function(e) {
   $('#sign-up').click(function(e) {
     e.preventDefault();
     e.stopPropagation();
+
+
+
+
     var email = $('#email').val();
     var password = $('#password').val()
 
-    currentUser.email = email;
-    currentUser.age = $("age").val();
-    currentUser.location = $("#location").val();
-    currentUser.firstName = $("#first-name-input").val();
-    currentUser.lastName = $("#last-name-input").val();
-    // currentUser.location
+    var age = $("#age-input").val();
+    var location = $("#location-input").val();
+    var firstName = $("#first-name-input").val();
+    var lastName = $("#last-name-input").val();
 
-    console.log(email, password);
-    if (email && password) {
+    console.log(email, age, location, firstName, lastName);
+    
+    if (email && password && age && location && firstName && lastName) {
+      // infoGather();
       window.location = "https://thornolan.github.io/Project-1/";
+
+      }
+      else {
+        //open modal 'fill in all blanks'
       }
 
-        // Register a new user
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-    .catch(function (err) {
+    // Register a new user
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+      .catch(function (err) {
         // Handle errors..
         var errorCode = err.code;
         var errorMessage = err.message;
 
         console.log(errorCode, errorMessage);
         });
+        // console.log(user);
 
+    // Push initial user data to FB    
       database.ref().set({
-      userEmail: currentUser.email,
-      age: currentUser.age,
-      location: currentUser.location,
-      firstName: currentUser.firstName,
-      lastName: currentUser.lastName,
-      // fbUser: currentUser,
-      // count: 1
+        userEmail: email,
+        age: age,
+        location: location,
+        firstName: firstName,
+        lastName: lastName,
+        // ID: user.uid,
+        // fbUser: currentUser,
+        // count: 100
 
-      });
+        });
     });
 
+    $("#password").on("focusout", function (e) {
+      if ($(this).val() !== $("#passwordConfirm").val()) {
+        $("#passwordConfirm").addClass("invalid");
+      } 
+      else {
+        $("#passwordConfirm").removeClass("invalid").addClass("valid");
+      }
+    });
+
+    $("#passwordConfirm").on("keyup", function (e) {
+      if ($("#password").val() !== $(this).val()) {
+          $(this).removeClass("valid").addClass("invalid");
+      } else {
+          $(this).removeClass("invalid").addClass("valid");
+      }
+    });
 
 // 'Sign-In' button clicked:
 
@@ -232,9 +273,9 @@ $("#sign-up-link").click(function(e) {
         var email = $('#email').val();
         var password = $('#password').val()
         console.log(email, password);
-        if (email && password) {
-        window.location = "https://thornolan.github.io/Project-1/";
-        }
+        // if (email && password) {
+        // window.location = "https://thornolan.github.io/Project-1/";
+        // }
     
     // Sign in existing user
     firebase.auth().signInWithEmailAndPassword(email, password)
@@ -280,24 +321,41 @@ $("#sign-up-link").click(function(e) {
       }
   })
 
-// Push initial user data to FB
 
 });
-  
-// </script>
 
-<!--Handle page events-->
+// ----------------------  INFO-GRABBER PAGE (not ready) -------------------- 
 
-  <!-- jquery Link -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  // function infoGather() {
+  //   $("#form-container").fadeOut();
+  //   $("#welcome-container").fadeOut();
+  //   setTimeout(function() {
+  //     $("#info-container").fadeIn();
+  //     }, 400);
 
-  <!-- Materialize.css javascript and parallax initiation link -->
-  <script src="assets/javascript/materialize.js"></script>
-  <script src="assets/javascript/init.js"></script>
+  //   if (userInterests.length < 5) {
+  //     $(".interest").click(function() {
+  //       userInterests.push($(this).val())
+  //       console.log($(this), userInterests)
+        
+  //       $(this).addClass("selected")
+  //     })
+  //    }
+  //    else {
+  //      userInterests.pop();
+  //    }
 
-  <!-- HTML link to our JavaScript file -->
-  <!-- <script src="assets/javascript/app.js"></script> -->
+  //    $("#go-button").click(function() {
+  //      console.log(userInterests)
 
-</body>
-</html>
+  //      if (userInterests.length > 3) {
+
+  //      database.ref().set({
+  //       interests: userInterests
+  //      });
+
+  //       window.location = "https://thornolan.github.io/Project-1/";
+  //      }
+  //    })
+
+  //   };

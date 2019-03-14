@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-  <title> Project-1</title>
+  <title>Kender</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
   <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-
-
 
   <!-- Responsive Layout view link -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -38,133 +35,78 @@
   <!-- // =============================ATIF SECTION==================================== // -->
 
 
-  <h1>Weekend Warrior</h1>
-  <div class="form-display">
-    <form id="weather-form">
-
-    <label for="weather-input"></label>
-
-    <input type="text" id="weatherInput" placeholder="Search Weather Location">
-
-    <!-- This button will trigger our AJAX call -->
-    <input id="find-weather" type="submit">
-    </form>   
-        
-  </div>
-
-  
-  
-  <div class="weather-container">
-   <div class="row">
-      <div class="col s12 m6 l4">
-        <div class="card">
-          <div class="card-image">
-            <img src="./assets/images/storm-w5.gif">
-            <span class="card-title" id="card-1"></span>
-          </div>
-          <div class="card-content">
-              <p>Current Weather</p>
-            </div>
-        </div>
-      </div>
-         <div class="col s12 m6 l4">
-           <div class="card">
-             <div class="card-image">
-               <img src="./assets/images/storm-w2.gif">
-               <span class="card-title" id="card-2"></span>
-             </div>
-             <div class="card-content">
-                 <p>Weather Day-2</p>
-               </div>
-           </div>
-         </div>
-      
-           <div class="col s12 m6 l4">
-             <div class="card">
-               <div class="card-image">
-                 <img src="./assets/images/storm-w3.gif">
-                 <span class="card-title" id="card-3"></span>
-               </div>
-               <div class="card-content">
-                   <p>Weather Day-3</p>
-                 </div>
-             </div>
-           </div>       
-       
-         </div>
-     </div> <br>  
-  
-  
-  
-  
   <!-- // ========================END ATIF SECTION====================================== // -->
   
   
   <!-- // =================================THOR SECTION=================================== // -->
 
-<nav class="amber darken-2" role="navigation">
-  <div class="nav-wrapper container">
-    <a id="logo-container" href="" class="brand-logo"><img class="brand-logo" src="assets/images/proj-1-logo.png" alt="Brand Icon"></a>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="#"><i class="material-icons indigo-text text-darken-3">cached</i></a></li>
-    </ul>
-
-    <ul id="nav-mobile" class="sidenav">
-      <li><a href="#">Navbar Link</a></li>
-    </ul>
-    <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-  </div>
-</nav>
-
+<!-- Top parallax image -->
 <div id="index-banner" class="parallax-container">
   <div class="section no-pad-bot">
     <div class="container">
-      <br><br>
-      <h1 class="header center light">Welcome</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">Tell us a bit about yourself... <br> We'll do the rest.</h5>
-      </div>
-      <div class="row center">
-        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light indigo darken-3">Get Started</a>
-      </div>
-      <br><br>
+      
+      <h1 class="header center light" style="color:gold; font-family:'Coustard', serif">Here's what we found for you...</h1>
+      
     </div>
   </div>
-  <div class="parallax"><img src="assets/images/hot-rainy-gif.gif" alt="Unsplashed background img 1"></div>
+  <div class="parallax"><img src="assets/images/hot-rainy-gif.gif" alt="Foggy Forest"></div>
 </div>
 
-
-<div class="container-fluid amber darken-2">
+<!-- weather display section -->
+<div class="container-fluid grey darken-4">
   <div class="section">
 
-    <!--   Icon Section   -->
-    <div class="row">
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center indigo-text text-darken-3"><i class="material-icons">flash_on</i></h2>
-          <h5 class="center indigo-text text-darken-3">Speeds up development</h5>
-
-          <p class="indigo-text text-darken-3">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+      <div class="form-display">
+          <form id="weather-form">
+      
+          <label for="weather-input"></label>
+      
+          <input type="text" id="weatherInput" placeholder="Search Weather Location">
+      
+          <!-- This button will trigger our AJAX call -->
+          <input id="find-weather" type="submit">
+          </form>   
+              
         </div>
-      </div>
-
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center indigo-text text-darken-3"><i class="material-icons">group</i></h2>
-          <h5 class="center indigo-text text-darken-3">User Experience Focused</h5>
-
-          <p class="indigo-text text-darken-3">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-        </div>
-      </div>
-
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center indigo-text text-darken-3"><i class="material-icons">settings</i></h2>
-          <h5 class="center indigo-text text-darken-3">Easy to work with</h5>
-
-
-          <p class="indigo-text text-darken-3">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-
+        <div class="weather-container">
+         <div class="row">
+            <div class="col s12 m6 l4">
+              <div class="card">
+                <div class="card-image">
+                  <img src="./assets/images/storm-w5.gif">
+                  <span class="card-title" id="card-1"></span>
+                </div>
+                <div class="card-content">
+                    <p>Day 1</p>
+                  </div>
+              </div>
+            </div>
+               <div class="col s12 m6 l4">
+                 <div class="card">
+                   <div class="card-image">
+                     <img src="./assets/images/storm-w2.gif">
+                     <span class="card-title" id="card-2"></span>
+                   </div>
+                   <div class="card-content">
+                       <p>Day 2</p>
+                     </div>
+                 </div>
+               </div>
+            
+                 <div class="col s12 m6 l4">
+                   <div class="card">
+                     <div class="card-image">
+                       <img src="./assets/images/storm-w3.gif">
+                       <span class="card-title" id="card-3"></span>
+                     </div>
+                     <div class="card-content">
+                         <p>Day 3</p>
+                       </div>
+                   </div>
+                 </div>       
+             
+               </div>
+           </div> 
 
         </div>
       </div>
@@ -173,20 +115,57 @@
   </div>
 </div>
 
-
+<!-- second parallax image container -->
 <div class="parallax-container valign-wrapper">
   <div class="section no-pad-bot">
     <div class="container">
       <div class="row center">
-        <h5 class="header col s12 light">Coming up in your area:</h5>
+        <h3 class="header center col s12" style="color:gold; font-family:'Coustard', serif">A fresh playlist and some events in your area:</h3>
       </div>
     </div>
   </div>
-  <div class="parallax"><img src="assets/images/rainy-3.gif" alt="Unsplashed background img 2"></div>
+  <div class="parallax"><img src="assets/images/foggy-forest.gif" alt="Unsplashed background img 2"></div>
 </div>
 
-<div class="container-fluid amber darken-2">
+<!-- spotify and eventbrite display area -->
+<div class="container-fluid grey darken-4">
   <div class="section">
+      <div class="row">
+        <div class="col s12 m4" style="float: left;">
+          <div class="card">
+            <div class="card-image">
+              <img id="playlist-image" style="width:100%; height:auto;" src="">
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="card">
+            <div class="card-image">
+              <img id="playlist-image" style="width:100%; height:auto;" src="">
+            </div>
+            <div class="card-action black">
+              <iframe id="spotify-player" src="" width="100%" height="380px" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="row">
+            <div class="col s8 m8">
+            <p class="white-text" style="text-align:center;">Not satisfied?</p>
+            <p class="white-text" style="text-align:center;">Pick your mood</p>
+            </div>
+            <div class="col m5">
+            <a class="waves-effect waves-light btn" id="happy" >Happy</a><br>
+            <a class="waves-effect waves-light btn" id="sad">Sad</a><br>
+            <a class="waves-effect waves-light btn" id="chill">Chill</a><br>
+            </div>
+            <div class="col m5">
+            <a class="waves-effect waves-light btn" id="angry">Angry</a><br>
+            <a class="waves-effect waves-light btn" id="lo-fi">Lo-fi</a><br>
+              </div>
+            </div>
+        </div>
+      </div>
 
     <div class="row">
       <div class="col s12 center">
@@ -218,47 +197,8 @@
   </div>
 </div>
 
-
-<div class="parallax-container valign-wrapper">
-  <div class="section no-pad-bot">
-    <div class="container">
-      <div class="row center">
-        <h5 class="header col s12 light">A fresh new playlist, just for you.</h5>
-      </div>
-    </div>
-  </div>
-  <div class="parallax"><img src="assets/images/rainy-gif.gif" alt="Unsplashed background img 3"></div>
-</div>
-
-<footer class="page-footer amber darken-2">
-  <div class="container">
-    <div class="row">
-      <div class="col l6 s12">
-        <h5 class="indigo-text text-darken-3">Company Bio</h5>
-        <p class="indigo-text text-darken-3">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
-      </div>
-      <div class="col l3 s12">
-        <h5 class="indigo-text text-darken-3">Settings</h5>
-        <ul>
-          <li><a class="indigo-text text-darken-3" href="#!">Link 1</a></li>
-          <li><a class="indigo-text text-darken-3" href="#!">Link 2</a></li>
-          <li><a class="indigo-text text-darken-3" href="#!">Link 3</a></li>
-          <li><a class="indigo-text text-darken-3" href="#!">Link 4</a></li>
-        </ul>
-      </div>
-      <div class="col l3 s12">
-        <h5 class="indigo-text text-darken-3">Connect</h5>
-        <ul>
-          <li><a class="indigo-text text-darken-3" href="#!">Link 1</a></li>
-          <li><a class="indigo-text text-darken-3" href="#!">Link 2</a></li>
-          <li><a class="indigo-text text-darken-3" href="#!">Link 3</a></li>
-          <li><a class="indigo-text text-darken-3" href="#!">Link 4</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
+<!-- page footer -->
+<footer class="page-footer grey darken-4">
   <div class="footer-copyright">
     <div class="container">
     Made by <a class="indigo-text text-darken-3" href="#">Liam Condon, Samuel Thompson, Atif Tariq, and Thor Nolan</a>
@@ -271,42 +211,7 @@
   
   
   <!-- // ================================SAM SECTION========================================= // -->
-  
-  
-  
-  <br> <br> <br>
-  <div class="row">
-    <div class="col s12 m4" style="float: left;">
-      <div class="card">
-        <div class="card-image">
-          <img id="playlist-image" style="width:100%; height:auto;" src="">
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="col s12 m4" style="float: left;">
-      <div class="card">
-        <div class="card-image">
-          <img id="playlist-image" style="width:100%; height:auto;" src="">
-        </div>
-        <div class="card-action black">
-          <iframe id="spotify-player" src="" width="100%" height="380px" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
-  
-  
-  <p>not satisfied? Pick your mood</p>
-  <a class="waves-effect waves-light btn" id="happy">Happy</a>
-  <a class="waves-effect waves-light btn" id="sad">Sad</a>
-  <a class="waves-effect waves-light btn" id="chill">Chill</a>
-  <a class="waves-effect waves-light btn" id="angry">Angry</a>
-  <a class="waves-effect waves-light btn" id="lo-fi">Lo-fi</a>
+
   <!-- // ================================END SAM SECTION======================================= // -->
 
 

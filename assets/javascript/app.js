@@ -179,11 +179,12 @@ $(document).ready(function () {
                 var newItem = $("<div>").addClass("carousel-item").attr("href", "#" + numbersArr[num] + "!");
                 var eventImage = $("<img>").attr("src", eventInfo.logo.original.url);
                 var eventTitle = $("<h2>").text(eventInfo.name.text);
+                    eventTitle.addClass("light-text");
 
                 // build modal trigger buttons for each carousel item
                 var newModalBtnHolder = $("<div>").addClass("carousel-fixed-item center");
                 var uniqueModalId = makeID();
-                var newModalBtn = $("<a>").addClass("waves-effect waves-light indigo indigo-darken-3 light-text btn modal-trigger").attr("href", "#modal" + uniqueModalId).text("More Info");
+                var newModalBtn = $("<a>").addClass("waves-effect waves-light yellow accent-4 light-text btn modal-trigger").attr("href", "#modal" + uniqueModalId).text("More Info");
 
                 // build modal popups, triggered by the buttons above by same-id attachment
                 var newModalHolder = $("<div>").addClass("modal").attr("id", "modal" + uniqueModalId);
