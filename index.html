@@ -52,7 +52,7 @@
           <input type="text" id="weatherInput" placeholder="Search Weather Location">
       
           <!-- This button will trigger our AJAX call -->
-          <button><input id="find-weather" type="submit"></button>
+          <input id="find-weather" type="submit"><span id="error-message"></span>
           </form>   
               
         </div>
@@ -61,7 +61,7 @@
             <div class="col s12 m6 l4">
               <div class="card">
                 <div class="card-image">
-                  <img class ="weather-image" src="assets/images/storm-w1.gif">
+                  <img class ="weather-image" src="assets/images/sunny-sky-gif.gif">
                   <span class="card-title" id="card-1"></span>
                 </div>
                 <div class="card-content">
@@ -72,7 +72,7 @@
                <div class="col s12 m6 l4">
                  <div class="card">
                    <div class="card-image">
-                     <img class ="weather-image" src="assets/images/storm-w1.gif">
+                     <img class ="weather-image" src="assets/images/sunny-sky-gif.gif">
                      <span class="card-title" id="card-2"></span>
                    </div>
                    <div class="card-content">
@@ -84,7 +84,7 @@
                  <div class="col s12 m6 l4">
                    <div class="card">
                      <div class="card-image">
-                       <img class ="weather-image" src="assets/images/storm-w1.gif">
+                       <img class ="weather-image" src="assets/images/sunny-sky-gif.gif">
                        <span class="card-title" id="card-3"></span>
                      </div>
                      <div class="card-content">
@@ -160,7 +160,8 @@
                   <input type="submit" name="eventForm" id="eventForm">
                 </form>
               </div>
-        </div>
+
+          </div class="container">
               <div class="carousel carousel-slider center appendEventsHere">
                   
               </div>
