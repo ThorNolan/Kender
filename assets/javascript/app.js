@@ -26,6 +26,14 @@ $(document).ready(function () {
 
     event.preventDefault();
 
+    if(inputLocation===""){
+      $("#error-message").text("Please enter a city.");
+      return;
+    }
+    else{
+      $("#error-message").text("");
+    }
+    
     $(".card").show();
 
     var inputLocation = $("#weatherInput").val();     
