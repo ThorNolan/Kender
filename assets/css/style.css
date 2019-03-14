@@ -1,71 +1,83 @@
 /* ============================LIAM SECTION===================================== */
 
+
 #welcome-container {
-  max-width: 50%;
-  font-family: 'Coustard', serif;
-  font-weight: 900;
-  font-size: 3.6rem;
-}
-
-
-h5 {
-  text-align: right;
-}
-#logo-name {
-  font-size: 3rem;
-}
-
-#main-container {
-  padding: 15px;
-  margin-top: 5%;
-  max-width: 45%;
-  background-color: rgba(255,255,255,.4)
-}
-
-button {
-  margin: auto;
-  display: block;
-}
-
-.hide {
-  display: none;
-}
-
-.fullscreen-bg {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow: hidden;
-  z-index: -100;
-}
-
-.fullscreen-bg__video {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  width: auto;
-  height: auto;
-  min-width: 100%;
-  min-height: 100%;
-  -webkit-transform: translate(-50%, -50%);
-     -moz-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-
-/* @media (max-width: 767px) {
+    max-width: 50%;
+    font-family: 'Coustard', serif;
+    font-weight: 900;
+    font-size: 3.8rem;
+  }
+  
+  
+  h5 {
+    text-align: right;
+  }
+  
+  .welcome-header {
+    text-align: left;
+    color: black;
+  }
+  
+  #do-more {
+    font-size: 3.6rem;
+  }
+  
+  #name-logo {
+    font-size: 3rem;
+    color: gold;
+  }
+  
+  #form-container {
+    padding: 15px;
+    margin-top: 5%;
+    max-width: 45%;
+    background-color: rgba(255,255,255,.5); 
+  }
+  
+  .btn {
+    background-color: gold;
+  }
+  
+  
+  .hide {
+    display: none;
+  }
+  
   .fullscreen-bg {
-      background: url('http://dev2.slicejack.com/fullscreen-video-demo/img/videoframe.jpg') center center / cover no-repeat;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
   }
-
+  
   .fullscreen-bg__video {
-      display: none;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-transform: translate(-50%, -50%);
+       -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
   }
-} */
-
-
+  
+  /* @media (max-width: 767px) {
+    .fullscreen-bg {
+        background: url('http://dev2.slicejack.com/fullscreen-video-demo/img/videoframe.jpg') center center / cover no-repeat;
+    }
+  
+    .fullscreen-bg__video {
+        display: none;
+    }
+  } */
+  
+  
 /* ==============================END LIAM SECTION=============================== */
 
 /* =============================ATIF SECTION==================================== */
