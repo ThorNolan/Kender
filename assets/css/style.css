@@ -121,6 +121,12 @@ label{
   font-size: 18px;
 }
 
+#error-message{
+  color: red;
+  padding: 5px 0 0 5px; 
+  font-size: 16px; 
+  font-weight: 800;
+}
 
 #weather-form{
   display: flex;
