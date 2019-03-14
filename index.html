@@ -14,6 +14,8 @@
   <!-- Materialize.css Links -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="http://fonts.googleapis.com/css?family=Leckerli+One|Coustard:900" rel="stylesheet" type="text/css" />
+
 
   <!-- HTML to CSS file Link -->
   <link rel="stylesheet" type="text/css" href="assets/css/style.css" media="screen,projection"/>
@@ -21,39 +23,24 @@
 </head>
 <body>
 
-  <!-- // ============================LIAM SECTION===================================== // -->
-
-
-
-
-
-
-
-
-  <!-- // ==============================END LIAM SECTION=============================== // -->
-  
-  <!-- // =============================ATIF SECTION==================================== // -->
-
-
-  <!-- // ========================END ATIF SECTION====================================== // -->
-  
-  
-  <!-- // =================================THOR SECTION=================================== // -->
 
 <!-- Top parallax image -->
 <div id="index-banner" class="parallax-container">
   <div class="section no-pad-bot">
     <div class="container">
       
-      <h1 class="header center light" style="color:gold; font-family:'Coustard', serif">Here's what we found for you...</h1>
+      <h1 class="header center light" id="weather-header">Your Weekend Looks Great!</h1>
+      <div class = "container" id="greeter-image">
+        <img style="display: block" src="assets/images/1530384-256.png">
+      </div>
       
     </div>
   </div>
-  <div class="parallax"><img src="assets/images/hot-rainy-gif.gif" alt="Foggy Forest"></div>
+  <div class="parallax"><img src="assets/images/foggy-forest.gif" alt="Foggy Trees"></div>
 </div>
 
 <!-- weather display section -->
-<div class="container-fluid grey darken-4">
+<div class="container">
   <div class="section">
 
       <div class="form-display">
@@ -64,7 +51,7 @@
           <input type="text" id="weatherInput" placeholder="Search Weather Location">
       
           <!-- This button will trigger our AJAX call -->
-          <input id="find-weather" type="submit">
+          <button><input id="find-weather" type="submit"></button>
           </form>   
               
         </div>
@@ -73,7 +60,7 @@
             <div class="col s12 m6 l4">
               <div class="card">
                 <div class="card-image">
-                  <img src="./assets/images/storm-w5.gif">
+                  <img src="https://cdn3.iconfinder.com/data/icons/picons-weather/57/05_mainly_sunny-512.png">
                   <span class="card-title" id="card-1"></span>
                 </div>
                 <div class="card-content">
@@ -84,7 +71,7 @@
                <div class="col s12 m6 l4">
                  <div class="card">
                    <div class="card-image">
-                     <img src="./assets/images/storm-w2.gif">
+                     <img src="https://cdn3.iconfinder.com/data/icons/picons-weather/57/05_mainly_sunny-512.png">
                      <span class="card-title" id="card-2"></span>
                    </div>
                    <div class="card-content">
@@ -96,7 +83,7 @@
                  <div class="col s12 m6 l4">
                    <div class="card">
                      <div class="card-image">
-                       <img src="./assets/images/storm-w3.gif">
+                       <img src="https://cdn3.iconfinder.com/data/icons/picons-weather/57/05_mainly_sunny-512.png">
                        <span class="card-title" id="card-3"></span>
                      </div>
                      <div class="card-content">
@@ -118,81 +105,89 @@
 <!-- second parallax image container -->
 <div class="parallax-container valign-wrapper">
   <div class="section no-pad-bot">
-    <div class="container">
+    <div class="container" id="non-weather">
       <div class="row center">
-        <h3 class="header center col s12" style="color:gold; font-family:'Coustard', serif">A fresh playlist and some events in your area:</h3>
+        <h3 class="header center col s12" id="middle-header">A fresh playlist and some events in your area:</h3>
       </div>
+
+      <!-- spotify and eventbrite display area -->
+      <div class="row">
+        <div class="col s12 m4" style="float: left;">
+          <div class = "container" id ="spotty-section">
+            <div class="card">
+              <div class="card-image">
+                <img id="playlist-image" style="width:100%; height:auto;" src="">
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m4">
+            <div class="card">
+              <div class="card-image">
+                <img id="playlist-image" style="width:100%; height:auto;" src="">
+              </div>
+              <div class="card-action black">
+                <iframe id="spotify-player" src="" width="100%" height="380px" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="col s12">
+            <div class="row">
+              <div class="col s12">
+              <p class="white-text" style="text-align:center;">Not satisfied?</p>
+              <p class="white-text" style="text-align:center;">Pick your mood</p>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                <a class="waves-effect waves-light btn" id="happy" >Happy</a><br>
+                <a class="waves-effect waves-light btn" id="sad">Sad</a><br>
+                <a class="waves-effect waves-light btn" id="chill">Chill</a><br>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                <a class="waves-effect waves-light btn" id="angry">Angry</a><br>
+                <a class="waves-effect waves-light btn" id="lo-fi">Lo-fi</a><br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m8">
+          <div class = "container" id ="eventbrite-section">
+            <!-- Form for eventbrite inputs -->
+              <div class="ebForm">
+                <form action="#" class="event-form">
+                  <select id="paid" name="paid">
+                    <option value="free">Free</option>
+                    <option value="paid">Paid</option>
+                  </select>
+              
+                  <input type="text" id="eventName" placeholder="Event Category">
+                  <!-- <input type="text" id="location" placeholder="location"> -->
+                  <input type="submit" name="eventForm" id="eventForm">
+                </form>
+              </div>
+      
+              <div class="carousel carousel-slider center appendEventsHere">
+                  
+              </div>
+              
+              <div class="modalHolder">
+                    
+            </div>
+          </div>
+
+
     </div>
   </div>
   <div class="parallax"><img src="assets/images/foggy-forest.gif" alt="Unsplashed background img 2"></div>
 </div>
 
 <!-- spotify and eventbrite display area -->
-<div class="container-fluid grey darken-4">
-  <div class="section">
-      <div class="row">
-        <div class="col s12 m4" style="float: left;">
-          <div class="card">
-            <div class="card-image">
-              <img id="playlist-image" style="width:100%; height:auto;" src="">
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card">
-            <div class="card-image">
-              <img id="playlist-image" style="width:100%; height:auto;" src="">
-            </div>
-            <div class="card-action black">
-              <iframe id="spotify-player" src="" width="100%" height="380px" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="row">
-            <div class="col s8 m8">
-            <p class="white-text" style="text-align:center;">Not satisfied?</p>
-            <p class="white-text" style="text-align:center;">Pick your mood</p>
-            </div>
-            <div class="col m5">
-            <a class="waves-effect waves-light btn" id="happy" >Happy</a><br>
-            <a class="waves-effect waves-light btn" id="sad">Sad</a><br>
-            <a class="waves-effect waves-light btn" id="chill">Chill</a><br>
-            </div>
-            <div class="col m5">
-            <a class="waves-effect waves-light btn" id="angry">Angry</a><br>
-            <a class="waves-effect waves-light btn" id="lo-fi">Lo-fi</a><br>
-              </div>
-            </div>
-        </div>
-      </div>
 
-    <div class="row">
-      <div class="col s12 center">
 
-        <!-- Form for eventbrite inputs -->
-          <div class="ebForm">
-            <form action="#" class="event-form">
-              <select id="paid" name="paid">
-                <option value="free">Free</option>
-                <option value="paid">Paid</option>
-              </select>
-          
-              <input type="text" id="eventName" placeholder="Event Category">
-              <!-- <input type="text" id="location" placeholder="location"> -->
-              <input type="submit" name="eventForm" id="eventForm">
-            </form>
-          </div>
-  
-          <div class="carousel carousel-slider center appendEventsHere">
-              
-          </div>
-          
-          <div class="modalHolder">
-                
-        </div>
-      </div>
-    </div>
+
 
   </div>
 </div>
