@@ -33,7 +33,7 @@ $(document).ready(function () {
     else{
       $("#error-message").text("");
     }
-    
+
     $(".card").show();
 
     var inputLocation = $("#weatherInput").val();     
@@ -184,7 +184,7 @@ $(document).ready(function () {
                 // Build carousel pieces
                 var newItem = $("<div>").addClass("carousel-item").attr("href", "#" + numbersArr[num] + "!");
                 var eventImage = $("<img>").attr("src", eventInfo.logo.original.url);
-                var eventTitle = $("<h2>").text(eventInfo.name.text);
+                var eventTitle = $("<h6>").text(eventInfo.name.text);
                     eventTitle.addClass("light-text");
 
                 // build modal trigger buttons for each carousel item
@@ -196,6 +196,7 @@ $(document).ready(function () {
                 var newModalHolder = $("<div>").addClass("modal").attr("id", "modal" + uniqueModalId);
                 var modalDiv = $("<div>").addClass("modal-content");
                 var modalDescription = $("<p>").text(eventInfo.description.text);
+                    modalDescription.addClass("black-text");
                 var modalFooterDiv = $("<div>").addClass("modal-footer");
                 var modalFooterItem = $("<a>").addClass("modal-close waves-effect waves-red btn-flat").text("Close");
 
