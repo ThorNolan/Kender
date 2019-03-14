@@ -244,7 +244,7 @@ $(document).ready(function () {
       //       "refresh_token": refreshToken
       //     }
       function spotifySearch() {
-        var token = "BQC2i8hE1YjZ1Ql6xXt7lMUkrJjctRWsqtSqzs-3xeXo97FKtHtSMRzmkJveC_cAdcKnV2ISIddIo-PMzAVnNo8FknjZX3gOWm7LqrTbFm6MvkixlD1RcHjf2DbAfAkH1oOLD72S8sgJ89FtddrlR3oRGum9leNvqjS5z7a0Wc0EdMtRI12NRDYG3rkJBtKviM4SnsUsXOAo8uua2DeGq7cz_IMJJC87sdjU0VNEn7EC6OfBeeHkaGN2gduvcYjPXQEcnqz2hsFsaL369WA"
+        var token = "BQDRnsP6BdUFZfxCy9N6vHj1XjZVPIT4W1_TLD9jhjBBsyG7mqofCgj7LQR3wF8FOEl5nWrOli-VWzsaEUp24Z_iGnHJ9bY-NUc_K3G1MGUKZ6lm9e6MNCAAzJYeeuKYDZHnha-72nCfwxdLPNpUd0GUB7VeWF0kBkMzKRu_Ca5fRXsxczoRk9cpaQRzdtTaMUWFrvSeeRw6GY6ljIQmNLi2rwpZy72Pl0VIKzkSdk3qrWZ4yi0HNV3qwV4nq1O8k-9gf_BjbwSEe0CbRsY"
       
         var type = "playlist";
       
