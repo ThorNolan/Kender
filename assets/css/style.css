@@ -180,18 +180,22 @@ label{
 .card .card-image img {
   
   width: 100%;
-  height:370px;
+  height:250px;
   
  
 }
 #card-1:hover, #card-2:hover, #card-3:hover,#weatherInput:hover {
-
 background: rgb(0, 0, 0, 0.4);
 
 
 }
-#card-1, #card-2, #card-3{
 
+.weather-image {
+  width: 100px;
+  height: 100px;
+}
+#card-1, #card-2, #card-3{
+  height: 250px;
     font-size: 18px;
   
   
@@ -218,7 +222,7 @@ background: rgb(0, 0, 0, 0.4);
   padding: 15px;
   display: block;
   margin: auto;
-  height: 400px;
+  height: auto;
 
 }
 

@@ -59,8 +59,6 @@ $(document).ready(function () {
         // appending the api response into web
        $("#card-"+cardNum).append("City Name:  "+ cityName);
 
-       var country = apiResponse.city.country;
-       $("#card-"+cardNum).append("<p> Country Name  :" + country + " </p>");
 
        var windSpeed = responseList[i].wind.speed;
 
@@ -73,7 +71,7 @@ $(document).ready(function () {
        $("#card-"+cardNum).append("<p>  Temperature (F)  :" + temperature + " </p>");
         
        var rainStatus = responseList[i].weather[0].description;
-       $("#card-"+cardNum).append("<p> Rain Status  :" + rainStatus + " </p>");
+       $("#card-"+cardNum).append("<p> Rain Status:  " + rainStatus + " </p>");
 
 
                       
@@ -237,7 +235,7 @@ $(document).ready(function () {
       //       "refresh_token": refreshToken
       //     }
       function spotifySearch() {
-        var token = "BQDYJJfjZW67xyVc1I3lwvTjQtRERIrCQ-uwLhGyN54kC7YT-ynU-EOMJ7x3VFkuic3zRgrIDi1HxXpHAp1dlyzImG3PA58--wFba7M-f4Tn5pXuQ1JkxJJS917HpQqgQyIstprjEF6xgBLciHMZ3yZg_jfhtdg7xXE7oB50p3vKmr5lHgStHLjRiF_goiivF5Xk8MNyOOb1ZPJykfT7qlnQsp2mUbZKrrN7RdXSVJ-64t2pq_W2f_cwzc6JQ3rCYDrYQvk1WEQq1CL_3Ms"
+        var token = "BQC2i8hE1YjZ1Ql6xXt7lMUkrJjctRWsqtSqzs-3xeXo97FKtHtSMRzmkJveC_cAdcKnV2ISIddIo-PMzAVnNo8FknjZX3gOWm7LqrTbFm6MvkixlD1RcHjf2DbAfAkH1oOLD72S8sgJ89FtddrlR3oRGum9leNvqjS5z7a0Wc0EdMtRI12NRDYG3rkJBtKviM4SnsUsXOAo8uua2DeGq7cz_IMJJC87sdjU0VNEn7EC6OfBeeHkaGN2gduvcYjPXQEcnqz2hsFsaL369WA"
       
         var type = "playlist";
       
@@ -269,7 +267,6 @@ $(document).ready(function () {
             // displaying information onto a card
             $("#playlist-name").text("Playlist Name: " + playlistName);
             $("#playlist-link").attr("href", playlistLinks);
-            $("#playlist-image").attr("src", playlistImage);
             $("#spotify-player").attr("src", "https://open.spotify.com/embed/playlist/" + playlistID);
 
           }
