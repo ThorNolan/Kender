@@ -4,202 +4,371 @@
   <title>Kender</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
+  <!-- Responsive Layout view link -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
   <!-- Favicon -->
   <link rel="shortcut icon" href="assets/images/better-favicon.ico" type="image/x-icon">
   <link rel="icon" href="assets/images/better-favicon.ico" type="image/x-icon">
 
-  <!-- Responsive Layout view link -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
   <!-- Materialize.css Links -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="http://fonts.googleapis.com/css?family=Leckerli+One|Coustard:900" rel="stylesheet" type="text/css" />
-
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!-- HTML to CSS file Link -->
   <link rel="stylesheet" type="text/css" href="assets/css/style.css" media="screen,projection"/>
+ 
+  <!-- Landing Page fonts -->
+  <link href="http://fonts.googleapis.com/css?family=Leckerli+One|Coustard:900" rel="stylesheet" type="text/css" />
 
 </head>
+
+
+
 <body>
 
-
-<!-- Top parallax image -->
-<div id="index-banner" class="parallax-container">
-  <div class="section no-pad-bot">
-    <div class="container">
-      
-      <h1 class="header center light" id="weather-header">Make your weekend 
-        <br><span id = "your-weekend">Your</span> weekend.</h1>
-      <div class = "container" id="greeter-image">
-        <img style="display: block" src="assets/images/1530384-256.png">
-      </div>
-      
-    </div>
+<!-- Video BG -->
+  <div class="fullscreen-bg">
+    <video loop muted autoplay class="fullscreen-bg__video">
+        <source src="assets/images/Lake - 161.mp4" type="video/mp4">
+        <source src="assets/images/Lake - 161.ogv" type="video/ogg">
+    </video>
   </div>
-  <div class="parallax"><img src="assets/images/foggy-forest.gif" alt="Foggy Trees"></div>
-</div>
 
-<!-- weather display section -->
-<div class="container">
-  <div class="section">
-
-      <div class="form-display">
-          <form id="weather-form">
-      
-          <label for="weather-input"></label>
-      
-          <input type="text" id="weatherInput" placeholder="Search Weather Location">
-      
-          <!-- This button will trigger our AJAX call -->
-          <input id="find-weather" type="submit"><span id="error-message"></span>
-          </form>   
-              
-        </div>
-        <div class="weather-container">
-         <div class="row">
-            <div class="col s12 m6 l4">
-              <div class="card">
-                <div class="card-image">
-                  <img class ="weather-image" src="assets/images/sunny-sky-gif.gif">
-                  <span class="card-title" id="card-1"></span>
-                </div>
-                <div class="card-content">
-                    <p>Day 1</p>
-                  </div>
-              </div>
+<!-- Welcome Header -->
+  <div class="container" id="welcome-container">
+    <h1 class = "welcome-header">
+      Plan less.
+      <br> 
+      Do <span id="do-more">more.</span>
+    </h1>
+   <br>
+    <h5>Welcome to <span id=name-logo>  kender.</span></h5>
+  </div>
+  
+<!-- Form and Buttons -->
+  <div class="container" id="form-container">
+    <div class="row">
+        <form class="col s12">
+        <div class="row hide" id = "sign-up-form">
+          <div class="input-field col s12" id ="first-name">
+            <input id="first-name-input" type="text" class="validate">
+            <label for="first-name-input">First Name</label>
+          </div>
+          <div class="input-field col s12" id ="last-name">
+            <input id="last-name-input" type="text" class="validate">
+            <label for="last-name-input">Last Name</label>
+          </div>
+          <div class="input-field col s2" id ="age">
+              <input id="age-input" type="text" class="validate">
+              <label for="age-input">Age</label>
             </div>
-               <div class="col s12 m6 l4">
-                 <div class="card">
-                   <div class="card-image">
-                     <img class ="weather-image" src="assets/images/sunny-sky-gif.gif">
-                     <span class="card-title" id="card-2"></span>
-                   </div>
-                   <div class="card-content">
-                       <p>Day 2</p>
-                     </div>
-                 </div>
-               </div>
-            
-                 <div class="col s12 m6 l4">
-                   <div class="card">
-                     <div class="card-image">
-                       <img class ="weather-image" src="assets/images/sunny-sky-gif.gif">
-                       <span class="card-title" id="card-3"></span>
-                     </div>
-                     <div class="card-content">
-                         <p>Day 3</p>
-                       </div>
-                   </div>
-                 </div>       
-             
-               </div>
-           </div> 
-
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- second parallax image container -->
-<div class="parallax-container valign-wrapper">
-  <div class="section no-pad-bot">
-    <div class="container" id="non-weather">
-      <div class="row center">
-        <h3 class="header center col s12" id="middle-header">A fresh playlist and some events in your area:</h3>
-      </div>
-
-      <!-- spotify and eventbrite display area -->
-      <div class="row">
-        <div class="col s12">
-
-          <div class="col s12">
-            <div class="card">
-              <div class="card-image">
-                <img id="playlist-image" style="width:100%; height:auto;" src="">
-              </div>
-              <div class="card-action black">
-                <iframe id="spotify-player" src="" width="100%" height="380px" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-              </div>
+            <div class="input-field col s10" id ="location">
+              <input id="location-input" type="text" class="validate">
+              <label for="location-input">Location</label>
             </div>
           </div>
-          <div class="col s12">
-            <div class="row">
-              <div class="col s12">
-              <p class="white-text" style="text-align:center;">Not satisfied?</p>
-              <p class="white-text" style="text-align:center;">Pick your mood</p>
-              </div>
-              <div class="container">
-                <a class="waves-effect waves-light btn" style="display: inline" id="happy">Happy</a><br>
-                <a class="waves-effect waves-light btn" style="display: inline" id="sad">Sad</a><br>
-                <a class="waves-effect waves-light btn"  style="display: inline"id="chill">Chill</a><br>
-                <a class="waves-effect waves-light btn"  style="display: inline"id="angry">Angry</a><br>
-                <a class="waves-effect waves-light btn"  style="display: inline"id="lo-fi">Lo-fi</a><br>
-              </div>
-              </div>
+        <div class="row">
+            <div class="input-field col s12">
+            <input id="email" type="email" class="validate">
+            <label for="email">Email</label>
+            <span class="helper-text" data-error="Please enter a valid email" data-success="✓"></span>
             </div>
-          </div>
         </div>
-      </div>
+        <div class="row">
+            <div class="input-field col s12" id = "password-box">
+            <input id="password" type="password" class="validate">
+            <label for="password">Password</label>
+            <span class="helper-text" data-error="wrong"></span>
+            </div>
 
+            <div class="input-field hide col s6" id="password-confirm">
+                <input id="passwordConfirm" type="password">
+                <label id="lblPasswordConfirm" for="passwordConfirm" data-error="Passwords do not match" data-success="Password Match">Password (Confirm)</label>
+            </div>
+        </div>
+
+
+        <button class="waves-effect hide waves-light btn" id="sign-up"><i class="material-icons left">waves</i>Sign Up</button>
+        <button class="waves-effect waves-light btn" id="sign-in"><i class="material-icons left">cloud</i>Sign In</button>
+        <button class="waves-effect hide waves-light btn" id="log-out"><i class="material-icons left">cloud</i>Log Out</button>
+        
+  
+        <p id= "sign-up-line">Don't have an account? <a href="#" id="sign-up-link">Sign Up</a></p>
+        <p class="hide" id= "sign-in-line">Already have an account? <a href="#" id="sign-in-link">Sign In</a></p>
+
+       
+        </form>
+    </div>
+  </div>
+
+  
+
+  <div class = "container" id = "info-container">
+    
       <div class = "row">
-        <div class="col s12 m8">
-          <div class = "container" id ="eventbrite-section">
-            <!-- Form for eventbrite inputs -->
-              <div class="ebForm">
-                <form action="#" class="event-form">
-                  <select id="paid" name="paid">
-                    <option value="free">Free</option>
-                    <option value="paid">Paid</option>
-                  </select>
-              
-                  <input type="text" id="eventName" placeholder="Event Category">
-                  <!-- <input type="text" id="location" placeholder="location"> -->
-                  <input type="submit" name="eventForm" id="eventForm">
-                </form>
-              </div>
+        <div class = "col s4">
+          <button class = "interest btn" val= "hiking">Hiking</button>
+        </div>
+        <div class = "col s4">
+          <button class = "interest btn" val= "music">Music</button>
+        </div> 
+        <div class = "col s4">
+          <button class = "interest btn" val= "event-1">Education</button>
+        </div> 
+      </div>
+      
+      <div class = "row">
+        <div class = "col s4">
+          <button class = "interest btn" val= "event-1">Food</button>
+        </div>
+        <div class = "col s4">
+          <button class = "interest btn" val= "event-1">Wine</button>
+        </div> 
+        <div class = "col s4">
+          <button class = "interest btn" val= "event-1">Puppers</button>
+        </div> 
+      </div>
+  
+      <div class = "row">
+        <div class = "col s4">
+          <button class = "interest btn" val= "event-1">Sports</button>
+        </div>
+        <div class = "col s4">
+          <button class = "interest btn" val= "event-1">Fitness</button>
+        </div> 
+        <div class = "col s4">
+          <button class = "interest btn" val= "event-1">Games</button>
+        </div> 
+      </div>
+  
+      <button class="waves-effect waves-light btn" id="sign-up"><i class="material-icons left">waves</i>Sign Up</button>
 
-          </div class="container">
-              <div class="carousel carousel-slider center appendEventsHere">
-                  
-              </div>
-              
-              <div class="modalHolder">
-                    
-            </div>
-          </div>
-
-
+  
     </div>
-  </div>
-  <div class="parallax"><img src="assets/images/foggy-forest.gif" alt="Unsplashed background img 2"></div>
-</div>
-
-<!-- page footer -->
-<footer class="page-footer grey darken-4">
-  <div class="footer-copyright">
-    <div class="container">
-    Made by <a class="indigo-text text-darken-3" href="#">Liam Condon, Samuel Thompson, Atif Tariq, and Thor Nolan</a>
-    </div>
-  </div>
-</footer>
   
   
-  <!-- // ================================END THOR SECTION================================= // -->
-  
-  
-  <!-- // ================================SAM SECTION========================================= // -->
-
-  <!-- // ================================END SAM SECTION======================================= // -->
 
 
 
-  <!-- ========== Script Links ============== -->
 
   <!-- Firebase Reference -->
-  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script> -->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>  
+<script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAOidefTN5O1Z32JUVc_DMiltfmLigriCs",
+    authDomain: "kender-9c76d.firebaseapp.com",
+    databaseURL: "https://kender-9c76d.firebaseio.com",
+    projectId: "kender-9c76d",
+    storageBucket: "kender-9c76d.appspot.com",
+    messagingSenderId: "650256419440"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script>
+
+// Global variables:
+var currentUser;
+var fireBaseUser;
+var auth = firebase.auth();
+var userInterests = [];
+
+
+// ---------------  ANONYMOUS EMAIL & PASSWORD ----------------
+
+// Sign in page:
+var database = firebase.database();
+
+$("#sign-up-link").click(function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  $("#sign-up").removeClass("hide");
+  $("#sign-in").addClass("hide");
+  $("#sign-up-line").addClass("hide");
+  $("#google-sign-in").removeClass("hide");
+  $("#sign-up-form").removeClass("hide");
+  $("#password-confirm").removeClass("hide");
+  $("#password-box").removeClass("s12");
+  $("#password-box").addClass("s6");
+
+})
+
+
+// 'Sign-Up' button clicked:
+  $('#sign-up').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+
+
+
+    var email = $('#email').val();
+    var password = $('#password').val()
+
+    var age = $("#age-input").val();
+    var location = $("#location-input").val();
+    var firstName = $("#first-name-input").val();
+    var lastName = $("#last-name-input").val();
+
+    console.log(email, age, location, firstName, lastName);
+    
+    if (email && password && age && location && firstName && lastName) {
+      // infoGather();
+      window.location = "main-page.html";
+
+      }
+      else {
+        //open modal 'fill in all blanks'
+      }
+
+    // Register a new user
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+      .catch(function (err) {
+        // Handle errors..
+        var errorCode = err.code;
+        var errorMessage = err.message;
+
+        console.log(errorCode, errorMessage);
+        });
+        // console.log(user);
+
+    // Push initial user data to FB    
+      database.ref().set({
+        userEmail: email,
+        age: age,
+        location: location,
+        firstName: firstName,
+        lastName: lastName,
+        // ID: user.uid,
+        // fbUser: currentUser,
+        // count: 100
+
+        });
+    });
+
+    $("#password").on("focusout", function (e) {
+      if ($(this).val() !== $("#passwordConfirm").val()) {
+        $("#passwordConfirm").addClass("invalid");
+      } 
+      else {
+        $("#passwordConfirm").removeClass("invalid").addClass("valid");
+      }
+    });
+
+    $("#passwordConfirm").on("keyup", function (e) {
+      if ($("#password").val() !== $(this).val()) {
+          $(this).removeClass("valid").addClass("invalid");
+      } else {
+          $(this).removeClass("invalid").addClass("valid");
+      }
+    });
+
+// 'Sign-In' button clicked:
+
+    $('#sign-in').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+        var email = $('#email').val();
+        var password = $('#password').val()
+        console.log(email, password);
+        // if (email && password) {
+        // window.location = "https://thornolan.github.io/Project-1/";
+        // }
+    
+    // Sign in existing user
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .catch(function (err) {
+        // Handle errors..
+        var errorCode = err.code;
+        var errorMessage = err.message;
+
+        console.log(errorCode, errorMessage);
+        });
+
+
+
+// 'Log-Out' button clicked:
+
+    $('#log-out').click(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      // If a user is logged in:
+      if (fireBaseUser) {
+
+        // Sign Out existing user
+        firebase.auth().signOut();
+        }             
+        
+    });
+
+// Handle Auth Events:
+
+  auth.onAuthStateChanged(function(user) {
+    fireBaseUser = user;  
+    if (user) {
+        console.log(user)
+        $("#log-out").removeClass("hide");
+        $("#sign-in").addClass("hide");
+        $("#sign-up").addClass("hide");
+      }
+      else {
+        console.log("not signed in");
+                  
+        $("#log-out").addClass("hide");
+        $("#sign-in").removeClass("hide");
+      }
+  })
+
+
+});
+
+// ----------------------  INFO-GRABBER PAGE (not ready) -------------------- 
+
+  // function infoGather() {
+  //   $("#form-container").fadeOut();
+  //   $("#welcome-container").fadeOut();
+  //   setTimeout(function() {
+  //     $("#info-container").fadeIn();
+  //     }, 400);
+
+  //   if (userInterests.length < 5) {
+  //     $(".interest").click(function() {
+  //       userInterests.push($(this).val())
+  //       console.log($(this), userInterests)
+        
+  //       $(this).addClass("selected")
+  //     })
+  //    }
+  //    else {
+  //      userInterests.pop();
+  //    }
+
+  //    $("#go-button").click(function() {
+  //      console.log(userInterests)
+
+  //      if (userInterests.length > 3) {
+
+  //      database.ref().set({
+  //       interests: userInterests
+  //      });
+
+  //       window.location = "https://thornolan.github.io/Project-1/";
+  //      }
+  //    })
+
+  //   };
+    
+
+
+// </script>
+
+<!--Handle page events-->
 
   <!-- jquery Link -->
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
@@ -210,7 +379,7 @@
   <script src="assets/javascript/init.js"></script>
 
   <!-- HTML link to our JavaScript file -->
-  <script src="assets/javascript/app.js"></script>
+  <!-- <script src="assets/javascript/app.js"></script> -->
 
 </body>
 </html>
