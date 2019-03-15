@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title>Kender</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="assets/images/better-favicon.ico" type="image/x-icon">
+  <link rel="icon" href="assets/images/better-favicon.ico" type="image/x-icon">
+
+  <!-- Responsive Layout view link -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Materialize.css Links -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="http://fonts.googleapis.com/css?family=Leckerli+One|Coustard:900" rel="stylesheet" type="text/css" />
+
+
+  <!-- HTML to CSS file Link -->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css" media="screen,projection"/>
+
+</head>
+<body>
+
+
+<!-- Top parallax image -->
+<div id="index-banner" class="parallax-container">
+  <div class="section no-pad-bot">
+    <div class="container">
+      
+      <h1 class="header center light" id="weather-header">Make your weekend 
+        <br><span id = "your-weekend">Your</span> weekend.</h1>
+      <div class = "container" id="greeter-image">
+        <img style="display: block" src="assets/images/1530384-256.png">
+      </div>
+      
+    </div>
+   </div>
+  <div class="parallax"><img src="assets/images/foggy-forest.gif" alt="Foggy Trees"></div>
+</div>
+
+<!-- weather display section -->
+<div class="container">
+  <div class="section">
+
+      <div class="form-display">
+          <form id="weather-form">
+      
+          <label for="weather-input"></label>
+      
+          <input type="text" id="weatherInput" placeholder="Search Weather Location">
+      
+          <!-- This button will trigger our AJAX call -->
+          <input id="find-weather" type="submit"><span id="error-message"></span>
+          </form>   
+              
+        </div>
+        <div class="weather-container">
+         <div class="row">
+            <div class="col s12 m6 l4">
+              <div class="card">
+                <div class="card-image">
+                  <img class ="weather-image" src="assets/images/sunny-sky-gif.gif">
+                  <span class="card-title" id="card-1"></span>
+                </div>
+                <div class="card-content">
+                    <p>Day 1</p>
+                  </div>
+              </div>
+            </div>
+               <div class="col s12 m6 l4">
+                 <div class="card">
+                   <div class="card-image">
+                     <img class ="weather-image" src="assets/images/sunny-sky-gif.gif">
+                     <span class="card-title" id="card-2"></span>
+                   </div>
+                   <div class="card-content">
+                       <p>Day 2</p>
+                     </div>
+                 </div>
+               </div>
+            
+                 <div class="col s12 m6 l4">
+                   <div class="card">
+                     <div class="card-image">
+                       <img class ="weather-image" src="assets/images/sunny-sky-gif.gif">
+                       <span class="card-title" id="card-3"></span>
+                     </div>
+                     <div class="card-content">
+                         <p>Day 3</p>
+                       </div>
+                   </div>
+                 </div>       
+             
+               </div>
+           </div> 
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- second parallax image container -->
+<div class="parallax-container valign-wrapper">
+  <div class="section no-pad-bot">
+    <div class="container" id="non-weather">
+      <div class="row center">
+        <h3 class="header center col s12" id="middle-header">A fresh playlist and some events in your area:</h3>
+      </div>
+
+      <!-- spotify and eventbrite display area -->
+      <div class="row">
+        <div class="col s12">
+
+          <div class="col s12">
+            <div class="card">
+              <div class="card-image">
+                <img id="playlist-image" style="width:100%; height:auto;" src="">
+              </div>
+              <div class="card-action black">
+                <iframe id="spotify-player" src="" width="100%" height="380px" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="col s12">
+            <div class="row">
+              <div class="col s12">
+              <p class="white-text" style="text-align:center;">Not satisfied?</p>
+              <p class="white-text" style="text-align:center;">Pick your mood</p>
+              </div>
+              <div class="container">
+                <a class="waves-effect waves-light btn" style="display: inline" id="happy">Happy</a><br>
+                <a class="waves-effect waves-light btn" style="display: inline" id="sad">Sad</a><br>
+                <a class="waves-effect waves-light btn"  style="display: inline"id="chill">Chill</a><br>
+                <a class="waves-effect waves-light btn"  style="display: inline"id="angry">Angry</a><br>
+                <a class="waves-effect waves-light btn"  style="display: inline"id="lo-fi">Lo-fi</a><br>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class = "row">
+        <div class="col s12 m8">
+          <div class = "container" id ="eventbrite-section">
+            <!-- Form for eventbrite inputs -->
+              <div class="ebForm">
+                <form action="#" class="event-form">
+                  <select id="paid" name="paid">
+                    <option value="free">Free</option>
+                    <option value="paid">Paid</option>
+                  </select>
+              
+                  <input type="text" id="eventName" placeholder="Event Category">
+                  <!-- <input type="text" id="location" placeholder="location"> -->
+                  <input type="submit" name="eventForm" id="eventForm">
+                </form>
+              </div>
+
+          </div class="container">
+              <div class="carousel carousel-slider center appendEventsHere">
+                  
+              </div>
+              
+              <div class="modalHolder">
+                    
+            </div>
+          </div>
+
+
+    </div>
+  </div>
+  <div class="parallax"><img src="assets/images/foggy-forest.gif" alt="Unsplashed background img 2"></div>
+</div>
+
+<!-- page footer -->
+<footer class="page-footer grey darken-4">
+  <div class="footer-copyright">
+    <div class="container">
+    Made by <a class="indigo-text text-darken-3" href="#">Liam Condon, Samuel Thompson, Atif Tariq, and Thor Nolan</a>
+    </div>
+  </div>
+</footer>
+  
+  
+  <!-- // ================================END THOR SECTION================================= // -->
+  
+  
+  <!-- // ================================SAM SECTION========================================= // -->
+
+  <!-- // ================================END SAM SECTION======================================= // -->
+
+
+
+  <!-- ========== Script Links ============== -->
+
+  <!-- Firebase Reference -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+  <!-- jquery Link -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+  <!-- Materialize.css javascript and parallax initiation link -->
+  <script src="assets/javascript/materialize.js"></script>
+  <script src="assets/javascript/init.js"></script>
+
+  <!-- HTML link to our JavaScript file -->
+  <script src="assets/javascript/app.js"></script>
+
+</body>
+</html>

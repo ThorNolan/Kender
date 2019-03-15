@@ -320,12 +320,5 @@ $(document).ready(function () {
     
 //function to call on info from a random playlist
 
-
-
-
-
-
-
-
 // ================================END SAM SECTION======================================= //
 })
